@@ -4,7 +4,6 @@ import linkedin from '../assets/social media icons/linkedin_2504923.png';
 import github from '../assets/social media icons/github_2504911.png';
 import twitter from '../assets/social media icons/logos_14417709.png';
 import instagram from '../assets/social media icons/social_12234080.png';
-import gmail from '../assets/social media icons/letter_12868793.png';
 function Navbar() {
   return (
     <div>
@@ -34,14 +33,6 @@ function Navbar() {
                 className="text-white hover:text-gray-300 transition-colors duration-300"
               >
                 Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#resume"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                Resume
               </a>
             </li>
             <li>

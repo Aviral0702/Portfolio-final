@@ -37,7 +37,7 @@ const Home = () => (
             I am a Back-End / Full-Stack Developer. I have experience in
             developing web applications using Node.js, Express.js, and React.js.
           </p>
-          <Button gradientDuoTone="purpleToPink" className="mt-4 w-full" as="a" href={Resume} download="myfile">Resume</Button>
+          <Button gradientDuoTone="purpleToPink" className="mt-4 w-[400px]" as="a" href={Resume} download="myfile">Resume</Button>
         </div>
         <div className="flex">
           <img
