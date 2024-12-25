@@ -5,6 +5,7 @@ import Contact from './Sections/Contact'
 import Experience from './Sections/Experience'
 import Home from './Sections/Home'
 import Projects from './Sections/Projects'
+import Skills from './Sections/Skills'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <div className="sections-container">
         <Home/>
         <About/>
+        <Skills/>
         <Experience/>
         <Projects/>
         <Contact/>

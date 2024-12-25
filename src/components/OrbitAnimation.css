@@ -1,0 +1,17 @@
+@keyframes orbitInner {
+    from {
+      transform: rotate(0deg) translate(130px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translate(130px) rotate(-360deg);
+    }
+  }
+  
+  @keyframes orbitOuter {
+    from {
+      transform: rotate(360deg) translate(200px) rotate(-360deg);
+    }
+    to {
+      transform: rotate(0deg) translate(200px) rotate(0deg);
+    }
+  }
