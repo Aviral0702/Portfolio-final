@@ -45,7 +45,7 @@ const OrbitAnimation = () => {
   return (
     <div className="relative w-[400px] h-[400px] mx-auto">
       {/* Center Circle */}
-      <div className="absolute top-1/2 left-1/2 w-[120px] h-[120px] bg-purple-600 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center shadow-lg">
+      <div className="absolute top-1/2 left-1/2 w-[120px] h-[120px] bg-purple-600 rounded-full -translate-x-1/3 -translate-y-1/3 z-20 flex items-center justify-center shadow-lg hover:bg-gradient-to-r from-purple-900 to-purple-700 transition-all duration-300">
         <span className="text-white text-lg font-bold">Tech</span>
       </div>
 
