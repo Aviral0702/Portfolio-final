@@ -29,6 +29,22 @@ function Navbar() {
             </li>
             <li>
               <a
+                href="#skills"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                Skills
+              </a>
+            </li>
+            <li>
+              <a
+                href="#experience"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                Experience
+              </a>
+            </li>
+            <li>
+              <a
                 href="#projects"
                 className="text-white hover:text-gray-300 transition-colors duration-300"
               >
