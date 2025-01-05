@@ -1,35 +1,38 @@
 import React from "react";
 import { motion } from "motion/react";
+
 const Projects = () => {
   const projects = [
     {
       title: "Enate",
-      description: "Project 1 description",
+      description: "Streamline workflows with cutting-edge AI automation.",
       hueA: 340,
       hueB: 10,
       link: "https://google.com",
     },
     {
       title: "Relo",
-      description: "Project 2 description",
+      description: "Revolutionize real estate management with innovation.",
       hueA: 20,
       hueB: 40,
       link: "https://facebook.com",
     },
     {
       title: "Another Project",
-      description: "Project 3 description",
+      description: "Innovative project for better user experiences.",
       hueA: 60,
       hueB: 90,
       link: "https://x.com",
     },
   ];
+
   return (
     <div
       id="home"
-      className="section bg-gray-950 text-white flex items-center justify-center min-h-screen max-h-full"
+      className="section bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white flex flex-col items-center justify-center min-h-screen"
     >
-      <div style={container}>
+      <h1 className="text-4xl font-bold text-center mb-8">Projects</h1>
+      <div style={carouselContainer}>
         {projects.map((project, i) => (
           <Card
             key={i}
@@ -51,28 +54,38 @@ function Card({ title, description, hueA, hueB, index, link }) {
   return (
     <motion.div
       className={`card-container-${index}`}
-      style={cardContainer}
+      style={{ ...cardContainer, background }}
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ amount: 0.8 }}
     >
-      <div style={{ ...splash, background }} />
-      <a href={link} target="_blank" rel="noreferrer">
-        <motion.div style={card} variants={cardVariants} className="card">
-          <h2>{title}</h2>
-          <p>{description}</p>
+      <a
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        className="group"
+        style={{ textDecoration: "none" }}
+      >
+        <motion.div
+          style={card}
+          variants={cardVariants}
+          className="card group-hover:scale-105 transition-transform duration-300"
+        >
+          <h2 className="text-2xl font-bold mb-4">{title}</h2>
+          <p className="text-sm text-gray-200">{description}</p>
         </motion.div>
       </a>
     </motion.div>
   );
 }
+
 const cardVariants = {
   offscreen: {
     y: 300,
   },
   onscreen: {
     y: 50,
-    rotate: -10,
+    rotate: -5,
     transition: {
       type: "spring",
       bounce: 0.4,
@@ -83,44 +96,54 @@ const cardVariants = {
 
 const hue = (h) => `hsl(${h}, 100%, 50%)`;
 
-const container = {
-  margin: "100px auto",
-  maxWidth: 500,
-  paddingBottom: 100,
-  width: "100%",
+/**
+ * ==============   Styles   ================
+ */
+
+// Carousel container for horizontal scrolling
+const carouselContainer = {
+  display: "flex",
+  gap: "2rem",
+  overflowX: "auto",
+  padding: "2rem",
+  scrollSnapType: "x mandatory",
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+  justifyContent: "center",
+  alignItems: "center",
 };
+
 const cardContainer = {
+  flex: "0 0 70%",
+  height: "500px",
   overflow: "hidden",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   position: "relative",
-  paddingTop: 20,
-  marginBottom: -120,
-};
-
-const splash = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  clipPath: `path("M 0 303.5 C 0 292.454 8.995 285.101 20 283.5 L 460 219.5 C 470.085 218.033 480 228.454 480 239.5 L 500 430 C 500 441.046 491.046 450 480 450 L 20 450 C 8.954 450 0 441.046 0 430 Z")`,
+  scrollSnapAlign: "center",
+  borderRadius: "20px",
+  transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease",
 };
 
 const card = {
   fontSize: 24,
-  width: 300,
-  height: 430,
+  width: "100%",
+  height: "100%",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-  borderRadius: 20,
-  background: "#f5f5f5",
-  padding: "1rem",
+  color: "#fff",
+  padding: "1.5rem",
+  borderRadius: "15px",
   boxShadow:
-    "0 0 1px hsl(0deg 0% 0% / 0.075), 0 0 2px hsl(0deg 0% 0% / 0.075), 0 0 4px hsl(0deg 0% 0% / 0.075), 0 0 8px hsl(0deg 0% 0% / 0.075), 0 0 16px hsl(0deg 0% 0% / 0.075)",
+    "0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2)",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backdropFilter: "blur(5px)",
+  border: "1px solid rgba(255, 255, 255, 0.2)",
 };
+
 export default Projects;
