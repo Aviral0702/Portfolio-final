@@ -24,11 +24,53 @@ const Projects = () => {
       hueB: 90,
       link: "https://x.com",
     },
+    {
+      title: "Relo",
+      description: "Revolutionize real estate management with innovation.",
+      hueA: 20,
+      hueB: 40,
+      link: "https://facebook.com",
+    },
+    {
+      title: "Another Project",
+      description: "Innovative project for better user experiences.",
+      hueA: 60,
+      hueB: 90,
+      link: "https://x.com",
+    },
+    {
+      title: "Another Project",
+      description: "Innovative project for better user experiences.",
+      hueA: 60,
+      hueB: 90,
+      link: "https://x.com",
+    },
+    {
+      title: "Another Project",
+      description: "Innovative project for better user experiences.",
+      hueA: 60,
+      hueB: 90,
+      link: "https://x.com",
+    },
+    {
+      title: "Another Project",
+      description: "Innovative project for better user experiences.",
+      hueA: 60,
+      hueB: 90,
+      link: "https://x.com",
+    },
+    {
+      title: "Another Project",
+      description: "Innovative project for better user experiences.",
+      hueA: 60,
+      hueB: 90,
+      link: "https://x.com",
+    },
   ];
 
   return (
     <div
-      id="home"
+      id="projects"
       className="section bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white flex flex-col items-center justify-center min-h-screen"
     >
       <h1 className="text-4xl font-bold text-center mb-8">Projects</h1>
@@ -109,8 +151,9 @@ const carouselContainer = {
   scrollSnapType: "x mandatory",
   scrollbarWidth: "none",
   msOverflowStyle: "none",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
+  paddingLeft: "4rem", // Ensures the first project is fully visible
 };
 
 const cardContainer = {

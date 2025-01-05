@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 import { Button } from "flowbite-react";
 import Resume from "../assets/resume/Aviral_asthana_Cl.pdf";
 const Home = () => (
-  <div className="relative min-h-screen w-full overflow-hidden group">
+  <div id="home" className="relative min-h-screen w-full overflow-hidden group">
     <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:blur-sm">
       <img
         src={bg}

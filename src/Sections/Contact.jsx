@@ -39,7 +39,7 @@ const Contact = () => {
 
   return (
     <div
-      id="home"
+      id="contact"
       className="section bg-gray-900 text-white flex flex-col justify-center p-10"
     >
       <h1 className="text-6xl mb-8 text-center">Contact</h1>
