@@ -28,13 +28,63 @@ const Projects = () => {
       link: "",
     },
     {
-      title: "Portfolio Website",
-      description: "A sleek portfolio showcasing my projects and skills.",
-      tags: ["Next.js", "TailwindCSS", "Vercel"],
+      title: "API Rate Limiter",
+      description: "An API rate limiter that limits the number of requests a user can make to an API within a given time frame.",
+      tags: ["Node.js", "Express", "Redis","Docker","MongoDB"],
       hueA: 160,
       hueB: 180,
-      link: "https://x.com",
+      link: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
     },
+    {
+      title: "ByteBazaar",
+      description: "ByteBazaar is a SaaS marketplace for buying and selling digital products like eBooks, courses, and software.",
+      tags: ["React", "Node.js", "MongoDB","Three.js","TailwindCSS","Express"],
+      hueA: 140,
+      hueB: 160,
+      link: "https://byte-bazaar-beta.vercel.app/",
+    },
+    {
+      title: "Meh-Your Own AI Friend",
+      description: "A simple AI friend that can chat with you.",
+      tags: ["React", "TailwindCSS","OpenAI"],
+      hueA: 140,
+      hueB: 160,
+      link: "https://me-your-own-ai-friend.vercel.app/",
+    },
+    {
+      title: "Guess the number on dice",
+      description: " A simple game where the user has to guess the number on the dice. The user has 3 chances to guess the correct number.",
+      tags: ["React", "TailwindCSS"],
+      hueA: 130,
+      hueB: 150,
+      link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
+    },
+    {
+      title: "Go REST API with Helm Chart",
+      description: "A REST API built using Golang and Helm chart for deploying the application on Kubernetes.",
+      tags: ["Golang", "Helm", "Kubernetes"],
+      hueA: 220,
+      hueB: 160,
+      link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
+    },
+    {
+      title: "EndlessIssues",
+      description: "This is a simple issue tracker to track my progress in Tech Journey.",
+      tags: ["React", "TailwindCSS","GitHub Pages"],
+      hueA: 160,
+      hueB: 200,
+      link: "",
+    },
+    {
+      title: "CSES-GitHub Chrome Extension",
+      description: "A Chrome extension that shows the number of problems solved by a user on CSES problem set on their GitHub profile.",
+      tags: ["JavaScript", "Chrome Extension"],
+      hueA: 200,
+      hueB: 150,
+      link: "",
+    },
+
+    
   ];
 
   return (
