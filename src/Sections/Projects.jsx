@@ -6,64 +6,25 @@ const Projects = () => {
     {
       title: "Enate",
       description: "Streamline workflows with cutting-edge AI automation.",
-      hueA: 340,
-      hueB: 10,
+      tags: ["React", "Node.js", "GraphQL"],
+      hueA: 240,
+      hueB: 260,
       link: "https://google.com",
     },
     {
       title: "Relo",
       description: "Revolutionize real estate management with innovation.",
-      hueA: 20,
-      hueB: 40,
+      tags: ["Django", "Python", "PostgreSQL"],
+      hueA: 200,
+      hueB: 220,
       link: "https://facebook.com",
     },
     {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
-      link: "https://x.com",
-    },
-    {
-      title: "Relo",
-      description: "Revolutionize real estate management with innovation.",
-      hueA: 20,
-      hueB: 40,
-      link: "https://facebook.com",
-    },
-    {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
-      link: "https://x.com",
-    },
-    {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
-      link: "https://x.com",
-    },
-    {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
-      link: "https://x.com",
-    },
-    {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
-      link: "https://x.com",
-    },
-    {
-      title: "Another Project",
-      description: "Innovative project for better user experiences.",
-      hueA: 60,
-      hueB: 90,
+      title: "Portfolio Website",
+      description: "A sleek portfolio showcasing my projects and skills.",
+      tags: ["Next.js", "TailwindCSS", "Vercel"],
+      hueA: 180,
+      hueB: 200,
       link: "https://x.com",
     },
   ];
@@ -80,9 +41,9 @@ const Projects = () => {
             key={i}
             title={project.title}
             description={project.description}
+            tags={project.tags}
             hueA={project.hueA}
             hueB={project.hueB}
-            index={i}
             link={project.link}
           />
         ))}
@@ -91,11 +52,11 @@ const Projects = () => {
   );
 };
 
-function Card({ title, description, hueA, hueB, index, link }) {
+function Card({ title, description, tags, hueA, hueB, link }) {
   const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`;
   return (
     <motion.div
-      className={`card-container-${index}`}
+      className="card-container"
       style={{ ...cardContainer, background }}
       initial="offscreen"
       whileInView="onscreen"
@@ -114,7 +75,14 @@ function Card({ title, description, hueA, hueB, index, link }) {
           className="card group-hover:scale-105 transition-transform duration-300"
         >
           <h2 className="text-2xl font-bold mb-4">{title}</h2>
-          <p className="text-sm text-gray-200">{description}</p>
+          <p className="text-sm text-gray-200 mb-4">{description}</p>
+          <div style={tagsContainer}>
+            {tags.map((tag, i) => (
+              <span key={i} style={tagStyle}>
+                {tag}
+              </span>
+            ))}
+          </div>
         </motion.div>
       </a>
     </motion.div>
@@ -136,13 +104,12 @@ const cardVariants = {
   },
 };
 
-const hue = (h) => `hsl(${h}, 100%, 50%)`;
+const hue = (h) => `hsl(${h}, 80%, 20%)`; // Darker colors
 
 /**
  * ==============   Styles   ================
  */
 
-// Carousel container for horizontal scrolling
 const carouselContainer = {
   display: "flex",
   gap: "2rem",
@@ -153,7 +120,7 @@ const carouselContainer = {
   msOverflowStyle: "none",
   justifyContent: "flex-start",
   alignItems: "center",
-  paddingLeft: "4rem", // Ensures the first project is fully visible
+  paddingLeft: "4rem",
 };
 
 const cardContainer = {
@@ -182,11 +149,30 @@ const card = {
   padding: "1.5rem",
   borderRadius: "15px",
   boxShadow:
-    "0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2)",
+    "0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3)",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backdropFilter: "blur(5px)",
   border: "1px solid rgba(255, 255, 255, 0.2)",
+};
+
+// Tags container
+const tagsContainer = {
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  gap: "0.5rem",
+};
+
+// Individual tag style
+const tagStyle = {
+  backgroundColor: "rgba(255, 255, 255, 0.2)",
+  color: "white",
+  padding: "0.3rem 0.6rem",
+  borderRadius: "10px",
+  fontSize: "0.75rem",
+  fontWeight: "bold",
+  textTransform: "uppercase",
 };
 
 export default Projects;
