@@ -60,8 +60,8 @@ const Contact = () => {
               <label className="block text-sm font-medium">Name</label>
               <input
                 type="text"
-                name="user_name"
-                value={formData.user_name}
+                name="from_name"
+                value={formData.from_name}
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md"
                 required
