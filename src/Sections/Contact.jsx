@@ -21,6 +21,12 @@ const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          })
           e.target.reset();
         },
         (error) => {
