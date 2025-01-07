@@ -1,7 +1,9 @@
 import React, { useState,useRef } from "react";
+import toast, {Toaster} from "react-hot-toast";
 import emailjs from "@emailjs/browser";
 import contactUs from "../assets/Images/undraw_personal-text_090t.svg";
 const Contact = () => {
+  const notify = () => toast.success("Message sent successfully!",{position: "bottom-right"});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +29,7 @@ const Contact = () => {
             subject: "",
             message: "",
           })
+          notify();
           e.target.reset();
         },
         (error) => {
@@ -53,6 +56,7 @@ const Contact = () => {
         <div className="w-full max-w-md">
           <form ref={form} onSubmit={sendEmail} className="space-y-4">
             <div>
+              <Toaster/>
               <label className="block text-sm font-medium">Name</label>
               <input
                 type="text"
