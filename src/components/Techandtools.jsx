@@ -19,6 +19,7 @@ import graphqlsrc from "../assets/icons/GraphQL.png";
 import redissrc from "../assets/icons/Redis.png";
 import ksrc from "../assets/icons/kubernetes.png";
 import cppsrc from "../assets/icons/cpp.png";
+
 const tools = [
   { name: "C++", icon: cppsrc },
   { name: "React", icon: reactsrc },
@@ -27,7 +28,7 @@ const tools = [
   { name: "MongoDB", icon: mongodbsrc },
   { name: "Git", icon: gitsrc },
   { name: "GraphQL", icon: graphqlsrc },
-  { name: "Kubernetes", ksrc },
+  { name: "Kubernetes", icon: ksrc },
   { name: "JavaScript", icon: jssrc },
   { name: "TypeScript", icon: tssrc },
   { name: "Express", icon: expresssrc },
@@ -44,20 +45,28 @@ const tools = [
 
 function Techandtools() {
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-8">Technologies</h2>
-      <h3 className="text-xl font-bold text-center mb-4">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8">
+        Technologies
+      </h2>
+      <h3 className="text-lg sm:text-xl font-bold text-center mb-6 max-w-3xl mx-auto">
         Using a combination of cutting-edge technologies and reliable
         open-source software I build user-focused, performant websites.
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-6 gap-x-40">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="p-3 w-[180px] bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-row items-center gap-2 "
+            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full"
           >
-            <img src={tool.icon} alt="" height={30} width={30} />
-            <div className="text-lg font-medium">{tool.name}</div>
+            <img 
+              src={tool.icon} 
+              alt={`${tool.name} icon`}
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div className="text-sm sm:text-base md:text-lg font-medium truncate">
+              {tool.name}
+            </div>
           </div>
         ))}
       </div>
