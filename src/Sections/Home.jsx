@@ -20,7 +20,7 @@ const Home = () => (
     <div className="relative z-10 min-h-screen px-4 flex items-center justify-center">
       <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl w-full gap-8">
         {/* Text Content */}
-        <div className="text-center md:text-left flex-1">
+        <div className="text-center flex flex-col items-center md:flex md:flex-col md:items-start md:text-left flex-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white flex flex-wrap justify-center md:justify-start gap-2">
             <span>Hi, I am</span>
             <Typewriter
