@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { useRef } from "react";
-import { ArrowLeft, ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
+import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 const Projects = () => {
   const carouselRef = useRef(null);
   const projects = [
