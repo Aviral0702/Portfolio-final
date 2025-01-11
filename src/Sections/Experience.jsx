@@ -30,7 +30,7 @@ const Experience = () => {
     <div id="experience" className="min-h-screen bg-black text-white py-12 px-4">
       {/* Header Section - Centered */}
       <div className="text-center mb-16">
-        <h1 className="text-6xl font-bold mb-4">Experience</h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Experience</h1>
       </div>
 
       {/* Timeline Container - Adjusted max-width and padding */}

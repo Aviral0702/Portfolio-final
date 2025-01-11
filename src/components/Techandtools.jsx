@@ -36,7 +36,7 @@ const tools = [
   { name: "Postman", icon: postmansrc },
   { name: "Redis", icon: redissrc },
   { name: "Redux", icon: reduxsrc },
-  { name: "Tailwind CSS", icon: tailwindsrc },
+  { name: "TailwindCSS", icon: tailwindsrc },
   { name: "Go", icon: gosrc },
   { name: "Linux", icon: linuxsrc },
   { name: "Firebase", icon: firebasesrc },
@@ -53,18 +53,18 @@ function Techandtools() {
         Using a combination of cutting-edge technologies and reliable
         open-source software I build user-focused, performant websites.
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-y-4 md:gap-x-20">
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full"
+            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full min-w-[160px]"
           >
-            <img 
-              src={tool.icon} 
+            <img
+              src={tool.icon}
               alt={`${tool.name} icon`}
-              className="w-6 h-6 sm:w-8 sm:h-8"
+              className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
             />
-            <div className="text-sm sm:text-base md:text-lg font-medium truncate">
+            <div className="text-sm sm:text-base md:text-lg font-medium break-words">
               {tool.name}
             </div>
           </div>
