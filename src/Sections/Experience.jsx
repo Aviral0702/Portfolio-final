@@ -27,53 +27,58 @@ const Experience = () => {
   ];
 
   return (
-    <div id="experience" className="min-h-screen bg-black text-white py-12 px-4">
-      {/* Header Section - Centered */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Experience</h1>
+    <div id="experience" className="min-h-screen bg-black text-white py-8 sm:py-12 px-4">
+      {/* Header Section */}
+      <div className="text-center mb-8 sm:mb-16">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative inline-block">
+          <p className='relative z-10'>Experience</p>
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500"></span>
+        </h1>
       </div>
 
-      {/* Timeline Container - Adjusted max-width and padding */}
+      {/* Timeline Container */}
       <div className="max-w-4xl mx-auto relative">
-        {/* Vertical Line - Adjusted position */}
-        <div className="absolute left-0 sm:left-6 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500" />
+        {/* Vertical Line */}
+        <div className="absolute left-3 sm:left-6 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 hidden sm:block" />
 
-        {/* Experience Items - Reduced spacing between items */}
-        <div className="space-y-8">
+        {/* Experience Items */}
+        <div className="space-y-6 sm:space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="relative pl-6 sm:pl-24">
-              {/* Timeline Dot - Adjusted position */}
-              <div className="absolute left-[-5px] sm:left-4 top-0 w-3 h-3 p-1 rounded-full bg-purple-500 border-4 border-black" />
+            <div key={index} className="relative pl-0 sm:pl-24">
+              {/* Timeline Dot - Hidden on mobile */}
+              <div className="absolute left-2 sm:left-4 top-0 w-3 h-3 rounded-full bg-purple-500 border-4 border-black hidden sm:block" />
               
-              {/* Content - Reduced padding and adjusted font sizes */}
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-4 shadow-xl">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                  <div>
-                    <h2 className="text-xl font-bold mb-1">{exp.company}</h2>
-                    <h3 className="text-purple-400 font-medium text-sm">({exp.duration})</h3>
+              {/* Content Card */}
+              <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                  <div className="space-y-1">
+                    <h2 className="text-lg sm:text-xl font-bold text-white">{exp.company}</h2>
+                    <h3 className="text-purple-400 font-medium text-xs sm:text-sm">({exp.duration})</h3>
                   </div>
                   <div className="mt-2 sm:mt-0">
-                    <span className="text-base text-gray-300">{exp.role}</span>
+                    <span className="text-sm sm:text-base text-gray-300 font-medium">{exp.role}</span>
                   </div>
                 </div>
                 
-                <ul className="space-y-2">
+                {/* Description List */}
+                <ul className="space-y-2 sm:space-y-3">
                   {exp.description.map((item, i) => (
-                    <li key={i} className="text-gray-300 text-sm flex items-start">
-                      <span className="mr-2">•</span>
-                      {item}
+                    <li key={i} className="text-gray-300 text-xs sm:text-sm flex items-start group">
+                      <span className="mr-2 text-purple-400 group-hover:text-pink-400 transition-colors">•</span>
+                      <span className="group-hover:text-white transition-colors">{item}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Profile Button - Only shown for Meshery */}
+                {/* Profile Button - Only for Meshery */}
                 {exp.company === "Meshery" && (
-                  <div className="mt-4">
+                  <div className="mt-4 sm:mt-6">
                     <a 
                       href="https://layer5.io/community/members/aviral-asthana" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-md hover:opacity-90 transition-opacity text-sm font-medium"
+                      className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-md hover:opacity-90 transition-all duration-300 text-xs sm:text-sm font-medium hover:scale-105"
                     >
                       View Profile
                     </a>

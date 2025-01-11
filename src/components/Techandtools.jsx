@@ -57,7 +57,7 @@ function Techandtools() {
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full min-w-[160px]"
+            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full md:min-w-[160px]"
           >
             <img
               src={tool.icon}

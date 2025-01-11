@@ -5,10 +5,10 @@ import Techandtools from '../components/Techandtools';
 const Skills = () => (
   <div
     id="skills"
-    className="section min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center py-10 md:py-20 px-4 md:px-8"
+    className="section min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center py-10 z-10 md:py-20 px-4 md:px-8"
   >
     {/* Header */}
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold relative mb-8 md:mb-16">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold relative mt-4 mb-4 md:mb-16">
       Skills
       <span className="absolute bottom-0 left-0 w-full h-1 bg-purple-600 mt-2"></span>
     </h1>
