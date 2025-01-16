@@ -6,6 +6,15 @@ const Projects = () => {
   const carouselRef = useRef(null);
   const projects = [
     {
+      title: "Unique JS Formatter",
+      description:
+        "An NPM package that formats JavaScript and TypeScript code",
+      tags: ["JavaScript", "TypeScript", "Node.js"],
+      hueA: 220,
+      hueB: 240,
+      link: "https://www.npmjs.com/package/unique-js-formatter",
+    },
+    {
       title: "Online Collaborative whiteboard",
       description:
         "Online collaborative Whiteboard which allows multiple users to draw on the same canvas in real-time.",
