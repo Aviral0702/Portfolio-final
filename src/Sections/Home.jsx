@@ -4,7 +4,7 @@ import astronaut from "../assets/Images/rb_38616.png";
 import Typewriter from "typewriter-effect";
 import { Button } from "flowbite-react";
 import Resume from "../assets/resume/Aviral_asthana_Cl.pdf";
-
+import fileIcon from "../assets/icons/file.png";
 const Home = () => (
   <div id="home" className="relative min-h-screen w-full overflow-hidden group">
     {/* Background Image */}
@@ -45,7 +45,8 @@ const Home = () => (
             href={Resume}
             download="Aviral_Asthana_Resume"
           >
-            Resume
+            <img src={fileIcon} alt="" width={20} height={14} className="mx-2"/>
+            Download Resume
           </Button>
         </div>
 
