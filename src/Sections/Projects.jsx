@@ -6,6 +6,15 @@ const Projects = () => {
   const carouselRef = useRef(null);
   const projects = [
     {
+      title: "Performance API",
+      description:
+        "An API made with HONO, Upstash-Redis and Cloudflare. This is a search API for Countries where fast response time is guaranteed. This is possible due to caching with the help of Redis and improved data fetching latency using Cloudflare Workers.",
+      tags: ["Next.js","Typescript", "HONO", "Upstash","Redis", "Cloudflare Workers","Wrangler"],
+      hueA: 220,
+      hueB: 240,
+      link: "",
+    },
+    {
       title: "Unique JS Formatter",
       description:
         "An NPM package that formats JavaScript and TypeScript code",
