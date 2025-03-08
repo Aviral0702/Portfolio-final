@@ -16,7 +16,15 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 px-4 overflow-x-hidden">
       <div className="flex justify-between items-center p-2">
-        <img src={logo} alt="Logo" height={70} width={70} className="p-1 -translate-x-2" />
+        <a href="/" className="flex items-center">
+          <img
+            src={logo}
+            alt="Logo"
+            height={70}
+            width={70}
+            className="p-1 -translate-x-2"
+          />
+        </a>
         {/* Hamburger Icon */}
         <button
           className="md:hidden text-white focus:outline-none"
