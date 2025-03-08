@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
-import chattosImage from "../assets/images/chattos.png";
-import testifAIImage from "../assets/images/testifAI.png";
+import chattosImage from "../assets/Images/chattos.png";
+import testifAIImage from "../assets/Images/testifAI.png";
 export default function LatestWork() {
   // Sample latest projects data - expanded with more examples and images
   const [latestProjects] = useState([
