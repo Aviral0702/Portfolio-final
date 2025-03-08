@@ -5,7 +5,9 @@ import Typewriter from "typewriter-effect";
 import { Button } from "flowbite-react";
 import Resume from "../assets/resume/Aviral_asthana_Cl.pdf";
 import fileIcon from "../assets/icons/file.png";
+import LatestWork from "./LatestWork";
 const Home = () => (
+  <>
   <div id="home" className="relative min-h-screen w-full overflow-hidden group">
     {/* Background Image */}
     <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:blur-sm">
@@ -61,6 +63,8 @@ const Home = () => (
       </div>
     </div>
   </div>
+  <LatestWork/>
+  </>
 );
 
 export default Home;

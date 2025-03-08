@@ -6,6 +6,15 @@ const Projects = () => {
   const carouselRef = useRef(null);
   const projects = [
     {
+      title: "Chattos",
+      description:
+        "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users in real-time.",
+      tags: ["Next.js", "TailwindCSS", "Convex", "Vercel"],
+      hueA: 180,
+      hueB: 200,
+      link: "https://chattos-hazel.vercel.app",
+    },
+    {
       title: "Performance API",
       description:
         "An API made with HONO, Upstash-Redis and Cloudflare. This is a search API for Countries where fast response time is guaranteed. This is possible due to caching with the help of Redis and improved data fetching latency using Cloudflare Workers.",
@@ -40,15 +49,6 @@ const Projects = () => {
       hueA: 200,
       hueB: 220,
       link: "https://podexo.vercel.app/",
-    },
-    {
-      title: "Chattos",
-      description:
-        "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users in real-time.",
-      tags: ["Next.", "TailwindCSS", "Redis", "Socket.io"],
-      hueA: 180,
-      hueB: 200,
-      link: "",
     },
     {
       title: "API Rate Limiter",
