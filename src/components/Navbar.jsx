@@ -9,175 +9,119 @@ import instagram from "../assets/social media icons/social_12234080.png";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
+
+  const socialLinks = [
+    {
+      href: "https://www.linkedin.com/in/aviral-asthana-02b70824b/",
+      img: linkedin,
+      alt: "LinkedIn",
+    },
+    {
+      href: "https://www.github.com/Aviral0702",
+      img: github,
+      alt: "GitHub",
+    },
+    {
+      href: "https://www.instagram.com/i_m_asthana_avi/",
+      img: instagram,
+      alt: "Instagram",
+    },
+    {
+      href: "https://x.com/AviralAsthana10",
+      img: twitter,
+      alt: "Twitter",
+    },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 px-4 overflow-x-hidden">
-      <div className="flex justify-between items-center p-2">
-        <a href="/" className="flex items-center">
+    <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 px-4">
+      <div className="flex justify-between items-center py-3 md:py-4 max-w-7xl mx-auto">
+        <a href="/" className="flex items-center" aria-label="Homepage">
           <img
             src={logo}
             alt="Logo"
-            height={70}
-            width={70}
-            className="p-1 -translate-x-2"
+            height={60}
+            width={60}
+            className="p-1"
           />
         </a>
+
         {/* Hamburger Icon */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden"
           onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
-          {isMenuOpen ? (
-            <X size={24} className="text-white" />
-          ) : (
-            <Menu size={24} className="text-white" />
-          )}
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
+
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex justify-center space-x-10">
-          <li>
+        <div className="hidden md:flex md:items-center md:space-x-10">
+          {navLinks.map((link) => (
             <a
-              href="#home"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
+              key={link.href}
+              href={link.href}
+              className="hover:text-gray-300 transition-colors duration-300"
             >
-              Home
+              {link.label}
             </a>
-          </li>
-          <li>
+          ))}
+        </div>
+
+        {/* Social Icons - Desktop */}
+        <div className="hidden md:flex items-center space-x-4">
+          {socialLinks.map(({ href, img, alt }) => (
             <a
-              href="#about"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={alt}
             >
-              About
+              <img src={img} alt={alt} height={28} width={28} />
             </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              Skills
-            </a>
-          </li>
-          <li>
-            <a
-              href="#experience"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              Experience
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              Projects
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-        {/* Social Media Icons */}
-        <ul className="hidden md:flex justify-center space-x-4">
-          <a href="https://www.linkedin.com/in/aviral-asthana-02b70824b/">
-            <li>
-              <img src={linkedin} alt="LinkedIn" height={30} width={30} />
-            </li>
-          </a>
-          <a href="https://www.github.com/Aviral0702">
-            <li>
-              <img src={github} alt="GitHub" height={30} width={30} />
-            </li>
-          </a>
-          <a href="https://www.instagram.com/i_m_asthana_avi/">
-            <li>
-              <img src={instagram} alt="Instagram" height={30} width={30} />
-            </li>
-          </a>
-          <a href="https://x.com/AviralAsthana10">
-            <li>
-              <img src={twitter} alt="Twitter" height={30} width={30} />
-            </li>
-          </a>
-        </ul>
+          ))}
+        </div>
       </div>
+
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black">
-          <ul className="flex flex-col space-y-4 items-center py-4">
-            <li>
+        <div className="md:hidden bg-black py-4 space-y-6">
+          <div className="flex flex-col items-center space-y-4">
+            {navLinks.map((link) => (
               <a
-                href="#home"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
+                key={link.href}
+                href={link.href}
+                className="text-white hover:text-gray-300 transition duration-300"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                {link.label}
               </a>
-            </li>
-            <li>
+            ))}
+          </div>
+          <div className="flex justify-center mt-4 space-x-5">
+            {socialLinks.map(({ href, img, alt }) => (
               <a
-                href="#about"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={alt}
               >
-                About
+                <img src={img} alt={alt} height={28} width={28} />
               </a>
-            </li>
-            <li>
-              <a
-                href="#skills"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#experience"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                Experience
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                Contact
-              </a>
-            </li>
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/in/aviral-asthana-02b70824b/">
-                <img src={linkedin} alt="LinkedIn" height={30} width={30} />
-              </a>
-              <a href="https://www.github.com/Aviral0702">
-                <img src={github} alt="GitHub" height={30} width={30} />
-              </a>
-              <a href="https://www.instagram.com/i_m_asthana_avi/">
-                <img src={instagram} alt="Instagram" height={30} width={30} />
-              </a>
-              <a href="https://x.com/AviralAsthana10">
-                <img src={twitter} alt="Twitter" height={30} width={30} />
-              </a>
-            </div>
-          </ul>
+            ))}
+          </div>
         </div>
       )}
     </nav>

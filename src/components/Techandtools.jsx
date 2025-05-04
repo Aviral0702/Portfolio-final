@@ -45,23 +45,32 @@ const tools = [
 
 function Techandtools() {
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8">
+    <section
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6"
+      id="skills"
+      aria-labelledby="tech-tools-heading"
+    >
+      <h2
+        id="tech-tools-heading"
+        className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8"
+      >
         Technologies
       </h2>
       <h3 className="text-lg sm:text-xl font-bold text-center mb-6 max-w-3xl mx-auto">
-        Using a combination of cutting-edge technologies and reliable
-        open-source software I build user-focused, performant websites.
+        Using a combination of cutting-edge technologies and reliable open-source software I build user-focused, performant websites.
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-y-4 md:gap-x-20">
         {tools.map((tool, index) => (
           <div
             key={index}
             className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full md:min-w-[160px]"
+            title={tool.name}
+            role="listitem"
           >
             <img
+              loading="lazy"
               src={tool.icon}
-              alt={`${tool.name} icon`}
+              alt={`${tool.name} logo`}
               className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
             />
             <div className="text-sm sm:text-base md:text-lg font-medium break-words">
@@ -70,7 +79,7 @@ function Techandtools() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

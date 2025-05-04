@@ -5,13 +5,15 @@ const About = () => {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
+    const section = document.querySelector("#about");
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
       { threshold: 0.5 }
     );
 
-    const section = document.querySelector("#about");
-    if (section) observer.observe(section);
+    observer.observe(section);
 
     return () => observer.disconnect();
   }, []);
@@ -19,18 +21,22 @@ const About = () => {
   return (
     <section
       id="about"
-      aria-label="About Me Section"
+      aria-labelledby="about-heading"
       className="bg-gray-900 text-white flex flex-col items-center justify-center py-16 px-4"
     >
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
+      <h1
+        id="about-heading"
+        className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8"
+      >
         About <span className="text-blue-400">Me</span>
       </h1>
+
       <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-6xl gap-12">
         {/* Text Content */}
         <div className="md:w-1/2">
           <div
-            className={`transition-all duration-700 ${
-              inView ? "animate-fadeInUp opacity-100" : "opacity-0"
+            className={`transition-all duration-700 ease-in-out ${
+              inView ? "animate-fadeInUp opacity-100" : "opacity-0 translate-y-4"
             }`}
           >
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 text-center md:text-left">
@@ -69,6 +75,7 @@ const About = () => {
             autoplay
             style={{ width: "100%", maxWidth: "400px", height: "auto" }}
             onError={() => console.error("Failed to load Lottie animation")}
+            aria-label="Animated illustration representing Aviral Asthana"
           />
         </div>
       </div>

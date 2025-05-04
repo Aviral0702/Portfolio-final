@@ -1,297 +1,408 @@
-import React from "react";
-import { motion } from "motion/react";
-import { useRef } from "react";
-import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
-const Projects = () => {
-  const carouselRef = useRef(null);
-  const projects = [
-    {
-      title: "Chattos",
-      description:
-        "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users in real-time.",
-      tags: ["Next.js", "TailwindCSS", "Convex", "Vercel"],
-      hueA: 180,
-      hueB: 200,
-      link: "https://chattos-hazel.vercel.app",
-    },
-    {
-      title: "Performance API",
-      description:
-        "An API made with HONO, Upstash-Redis and Cloudflare. This is a search API for Countries where fast response time is guaranteed. This is possible due to caching with the help of Redis and improved data fetching latency using Cloudflare Workers.",
-      tags: ["Next.js","Typescript", "HONO", "Upstash","Redis", "Cloudflare Workers","Wrangler"],
-      hueA: 220,
-      hueB: 240,
-      link: "",
-    },
-    {
-      title: "Unique JS Formatter",
-      description:
-        "An NPM package that formats JavaScript and TypeScript code",
-      tags: ["JavaScript", "TypeScript", "Node.js"],
-      hueA: 220,
-      hueB: 240,
-      link: "https://www.npmjs.com/package/unique-js-formatter",
-    },
-    {
-      title: "Online Collaborative whiteboard",
-      description:
-        "Online collaborative Whiteboard which allows multiple users to draw on the same canvas in real-time.",
-      tags: ["React", "Node.js", "Vercel", "TailwindCSS", "Socket.io"],
-      hueA: 210,
-      hueB: 230,
-      link: "https://online-collaborative-whiteboard.vercel.app/",
-    },
-    {
-      title: "Podexo",
-      description:
-        "Podexo is a web application that transforms your podcast episodes into well-crafted blog posts, making your content more accessible and engaging.",
-      tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-      hueA: 200,
-      hueB: 220,
-      link: "https://podexo.vercel.app/",
-    },
-    {
-      title: "API Rate Limiter",
-      description:
-        "An API rate limiter that limits the number of requests a user can make to an API within a given time frame.",
-      tags: ["Node.js", "Express", "Redis", "Docker", "MongoDB"],
-      hueA: 160,
-      hueB: 180,
-      link: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
-    },
-    {
-      title: "ByteBazaar",
-      description:
-        "ByteBazaar is a SaaS marketplace for buying and selling digital products like eBooks, courses, and software.",
-      tags: [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Three.js",
-        "TailwindCSS",
-        "Express",
-      ],
-      hueA: 140,
-      hueB: 160,
-      link: "https://byte-bazaar-beta.vercel.app/",
-    },
-    {
-      title: "Meh-Your Own AI Friend",
-      description: "A simple AI friend that can chat with you.",
-      tags: ["React", "TailwindCSS", "OpenAI"],
-      hueA: 140,
-      hueB: 160,
-      link: "https://me-your-own-ai-friend.vercel.app/",
-    },
-    {
-      title: "Guess the number on dice",
-      description:
-        " A simple game where the user has to guess the number on the dice. The user has 3 chances to guess the correct number.",
-      tags: ["React", "TailwindCSS"],
-      hueA: 130,
-      hueB: 150,
-      link:
-        "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
-    },
-    {
-      title: "Go REST API with Helm Chart",
-      description:
-        "A REST API built using Golang and Helm chart for deploying the application on Kubernetes.",
-      tags: ["Golang", "Helm", "Kubernetes"],
-      hueA: 220,
-      hueB: 160,
-      link:
-        "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
-    },
-    {
-      title: "EndlessIssues",
-      description:
-        "This is a simple issue tracker to track my progress in Tech Journey.",
-      tags: ["React", "TailwindCSS", "GitHub Pages"],
-      hueA: 160,
-      hueB: 200,
-      link: "",
-    },
-    {
-      title: "CSES-GitHub Chrome Extension",
-      description:
-        "A Chrome extension that shows the number of problems solved by a user on CSES problem set on their GitHub profile.",
-      tags: ["JavaScript", "Chrome Extension"],
-      hueA: 200,
-      hueB: 150,
-      link: "",
-    },
-  ];
+"use client"
 
-  const scrollCarousel = (direction) => {
-    const carousel = carouselRef?.current;
-    if (carousel) {
-      const scrollAmount = direction === "left" ? -200 : 200;
-      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
-  return (
-    <div
-      id="projects"
-      className="section bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white flex flex-col items-center justify-center min-h-screen"
-    >
-      <h1 className="text-4xl font-bold text-center mb-8">Projects</h1>
-      <div className="relative w-full">
-        <button
-          onClick={() => scrollCarousel("left")}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 p-3 z-10 "
-        >
-          <ArrowLeftCircle size={40} />
-        </button>
+import { useRef, useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowLeftCircle, ArrowRightCircle, ExternalLink, Github } from "lucide-react"
 
-        <div
-          style={carouselContainer}
-          ref={carouselRef}
-          className="relative overflow-x-auto"
-        >
-          {projects.map((project, i) => (
-            <Card
-              key={i}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              hueA={project.hueA}
-              hueB={project.hueB}
-              link={project.link}
-            />
-          ))}
-        </div>
-        <button
-          onClick={() => scrollCarousel("right")}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 p-8 z-10 "
-        >
-          <ArrowRightCircle size={40} />
-        </button>
-      </div>
-    </div>
-  );
-};
+const projectsData = [
+  {
+    id: "chattos",
+    title: "Chattos",
+    description:
+      "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users in real-time.",
+    tags: ["Next.js", "TailwindCSS", "Convex", "Vercel"],
+    hueA: 180,
+    hueB: 200,
+    link: "https://chattos-hazel.vercel.app",
+    github: "https://github.com/yourusername/chattos",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "performance-api",
+    title: "Performance API",
+    description:
+      "An API made with HONO, Upstash-Redis and Cloudflare. This is a search API for Countries where fast response time is guaranteed. This is possible due to caching with the help of Redis and improved data fetching latency using Cloudflare Workers.",
+    tags: ["Next.js", "Typescript", "HONO", "Upstash", "Redis", "Cloudflare Workers", "Wrangler"],
+    hueA: 220,
+    hueB: 240,
+    link: "",
+    github: "https://github.com/yourusername/performance-api",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "js-formatter",
+    title: "Unique JS Formatter",
+    description: "An NPM package that formats JavaScript and TypeScript code",
+    tags: ["JavaScript", "TypeScript", "Node.js"],
+    hueA: 220,
+    hueB: 240,
+    link: "https://www.npmjs.com/package/unique-js-formatter",
+    github: "https://github.com/yourusername/js-formatter",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "whiteboard",
+    title: "Online Collaborative whiteboard",
+    description: "Online collaborative Whiteboard which allows multiple users to draw on the same canvas in real-time.",
+    tags: ["React", "Node.js", "Vercel", "TailwindCSS", "Socket.io"],
+    hueA: 210,
+    hueB: 230,
+    link: "https://online-collaborative-whiteboard.vercel.app/",
+    github: "https://github.com/yourusername/whiteboard",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "podexo",
+    title: "Podexo",
+    description:
+      "Podexo is a web application that transforms your podcast episodes into well-crafted blog posts, making your content more accessible and engaging.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+    hueA: 200,
+    hueB: 220,
+    link: "https://podexo.vercel.app/",
+    github: "https://github.com/yourusername/podexo",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "rate-limiter",
+    title: "API Rate Limiter",
+    description:
+      "An API rate limiter that limits the number of requests a user can make to an API within a given time frame.",
+    tags: ["Node.js", "Express", "Redis", "Docker", "MongoDB"],
+    hueA: 160,
+    hueB: 180,
+    link: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
+    github: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "bytebazaar",
+    title: "ByteBazaar",
+    description:
+      "ByteBazaar is a SaaS marketplace for buying and selling digital products like eBooks, courses, and software.",
+    tags: ["React", "Node.js", "MongoDB", "Three.js", "TailwindCSS", "Express"],
+    hueA: 140,
+    hueB: 160,
+    link: "https://byte-bazaar-beta.vercel.app/",
+    github: "https://github.com/yourusername/bytebazaar",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "meh-ai",
+    title: "Meh-Your Own AI Friend",
+    description: "A simple AI friend that can chat with you.",
+    tags: ["React", "TailwindCSS", "OpenAI"],
+    hueA: 140,
+    hueB: 160,
+    link: "https://me-your-own-ai-friend.vercel.app/",
+    github: "https://github.com/yourusername/meh-ai",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "dice-game",
+    title: "Guess the number on dice",
+    description:
+      " A simple game where the user has to guess the number on the dice. The user has 3 chances to guess the correct number.",
+    tags: ["React", "TailwindCSS"],
+    hueA: 130,
+    hueB: 150,
+    link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
+    github: "https://github.com/yourusername/dice-game",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "go-rest-api",
+    title: "Go REST API with Helm Chart",
+    description: "A REST API built using Golang and Helm chart for deploying the application on Kubernetes.",
+    tags: ["Golang", "Helm", "Kubernetes"],
+    hueA: 220,
+    hueB: 160,
+    link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
+    github: "https://github.com/yourusername/go-rest-api",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "endless-issues",
+    title: "EndlessIssues",
+    description: "This is a simple issue tracker to track my progress in Tech Journey.",
+    tags: ["React", "TailwindCSS", "GitHub Pages"],
+    hueA: 160,
+    hueB: 200,
+    link: "",
+    github: "https://github.com/yourusername/endless-issues",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: "cses-extension",
+    title: "CSES-GitHub Chrome Extension",
+    description:
+      "A Chrome extension that shows the number of problems solved by a user on CSES problem set on their GitHub profile.",
+    tags: ["JavaScript", "Chrome Extension"],
+    hueA: 200,
+    hueB: 150,
+    link: "",
+    github: "https://github.com/yourusername/cses-extension",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+]
 
-function Card({ title, description, tags, hueA, hueB, link }) {
-  const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`;
+const hue = (h) => `hsl(${h}, 80%, 20%)`
+
+const ProjectCard = ({ title, description, tags, hueA, hueB, link, github, image, isActive, index }) => {
+  const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`
+
   return (
     <motion.div
-      className="card-container"
-      style={{ ...cardContainer, background }}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ amount: 0.8 }}
+      className={`flex-shrink-0 w-full sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3 h-[500px] overflow-hidden flex justify-center items-center relative scroll-snap-align-center rounded-2xl transition-all duration-500 ease-in-out ${
+        isActive ? "scale-100 opacity-100 z-10" : "scale-95 opacity-70 z-0"
+      }`}
+      style={{ background }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{
+        opacity: isActive ? 1 : 0.7,
+        y: 0,
+        scale: isActive ? 1 : 0.95,
+        transition: {
+          duration: 0.5,
+          delay: index * 0.1,
+          type: "spring",
+          stiffness: 100,
+        },
+      }}
+      whileHover={{ scale: 1.02 }}
+      layout
     >
-      <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        className="group"
-        style={{ textDecoration: "none" }}
-      >
-        <motion.div
-          style={card}
-          variants={cardVariants}
-          className="card group-hover:scale-105 transition-transform duration-300"
-        >
-          <h2 className="text-2xl font-bold mb-4">{title}</h2>
-          <p className="text-sm text-gray-200 mb-4">{description}</p>
-          <div style={tagsContainer}>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
+
+      <div className="w-full h-full flex flex-col justify-between p-6 relative z-10">
+        {image && (
+          <div className="absolute inset-0 z-0 opacity-20">
+            <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
+          </div>
+        )}
+
+        <div className="flex flex-col h-full">
+          <div className="mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">{title}</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full" />
+          </div>
+
+          <p className="text-sm sm:text-base text-gray-200 mb-6 line-clamp-4 max-w-prose">{description}</p>
+
+          <div className="flex flex-wrap gap-2 mt-auto">
             {tags.map((tag, i) => (
-              <span key={i} style={tagStyle}>
+              <span
+                key={`${tag}-${i}`}
+                className="bg-white/20 text-white px-2 py-1 rounded-lg text-xs font-bold uppercase backdrop-blur-sm"
+              >
                 {tag}
               </span>
             ))}
           </div>
-        </motion.div>
-      </a>
+
+          <div className="flex gap-3 mt-6">
+            {link && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-sm"
+                aria-label={`Visit ${title} website`}
+              >
+                <ExternalLink size={16} />
+                <span>Visit</span>
+              </a>
+            )}
+
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-sm"
+                aria-label={`View ${title} source code on GitHub`}
+              >
+                <Github size={16} />
+                <span>Code</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
     </motion.div>
-  );
+  )
 }
 
-const cardVariants = {
-  offscreen: {
-    y: 300,
-  },
-  onscreen: {
-    y: 50,
-    rotate: -5,
-    transition: {
-      type: "spring",
-      bounce: 0.4,
-      duration: 0.8,
-    },
-  },
-};
+const Projects = () => {
+  const carouselRef = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isScrolling, setIsScrolling] = useState(false)
 
-const hue = (h) => `hsl(${h}, 80%, 20%)`; // Darker colors
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
 
-/**
- * ==============   Styles   ================
- */
+    handleResize()
+    window.addEventListener("resize", handleResize)
 
-const carouselContainer = {
-  display: "flex",
-  gap: "2rem",
-  overflowX: "auto",
-  padding: "2rem",
-  scrollSnapType: "x mandatory",
-  scrollbarWidth: "none",
-  msOverflowStyle: "none",
-  justifyContent: "flex-start",
-  alignItems: "center",
-  paddingLeft: "4rem",
-};
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
 
-const cardContainer = {
-  flex: "0 0 70%",
-  height: "500px",
-  overflow: "hidden",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "relative",
-  scrollSnapAlign: "center",
-  borderRadius: "20px",
-  transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease",
-};
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
 
-const card = {
-  fontSize: 24,
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-  color: "#fff",
-  padding: "1.5rem",
-  borderRadius: "15px",
-  boxShadow: "0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3)",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backdropFilter: "blur(5px)",
-  border: "1px solid rgba(255, 255, 255, 0.2)",
-};
+    const handleScroll = () => {
+      if (isScrolling) return
 
-// Tags container
-const tagsContainer = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  gap: "0.5rem",
-};
+      const scrollLeft = carousel.scrollLeft
+      const cardWidth = carousel.clientWidth / (isMobile ? 1 : 2.5)
+      const newIndex = Math.round(scrollLeft / cardWidth)
 
-// Individual tag style
-const tagStyle = {
-  backgroundColor: "rgba(255, 255, 255, 0.2)",
-  color: "white",
-  padding: "0.3rem 0.6rem",
-  borderRadius: "10px",
-  fontSize: "0.75rem",
-  fontWeight: "bold",
-  textTransform: "uppercase",
-};
+      setActiveIndex(Math.min(newIndex, projectsData.length - 1))
+    }
 
-export default Projects;
+    carousel.addEventListener("scroll", handleScroll)
+    return () => carousel.removeEventListener("scroll", handleScroll)
+  }, [isScrolling, isMobile])
+
+  const scrollToIndex = (index) => {
+    const carousel = carouselRef?.current
+    if (!carousel) return
+
+    const safeIndex = Math.max(0, Math.min(index, projectsData.length - 1))
+    setActiveIndex(safeIndex)
+
+    const cardWidth = carousel.clientWidth / (isMobile ? 1 : 2.5)
+    const scrollPosition = safeIndex * cardWidth
+
+    setIsScrolling(true)
+    carousel.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    })
+
+    setTimeout(() => setIsScrolling(false), 500)
+  }
+
+  const scrollCarousel = (direction) => {
+    const newIndex =
+      direction === "left" ? Math.max(0, activeIndex - 1) : Math.min(projectsData.length - 1, activeIndex + 1)
+    scrollToIndex(newIndex)
+  }
+
+  return (
+    <section
+      id="projects"
+      className="py-16 md:py-24 bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white flex flex-col items-center justify-center min-h-screen overflow-hidden"
+    >
+      <div className="max-w-7xl w-full px-4 mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Projects</span>
+          </h1>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            A collection of my recent work and personal projects. Each project represents a unique challenge and
+            learning experience.
+          </p>
+        </motion.div>
+
+        <div className="relative w-full">
+          <AnimatePresence>
+            {activeIndex > 0 && (
+              <motion.button
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                onClick={() => scrollCarousel("left")}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-gray-900/70 rounded-full backdrop-blur-sm border border-gray-700 hover:bg-gray-800 transition-all duration-300 hidden md:flex items-center justify-center"
+                aria-label="View previous project"
+              >
+                <ArrowLeftCircle size={28} className="text-white/90" />
+              </motion.button>
+            )}
+
+            {activeIndex < projectsData.length - 1 && (
+              <motion.button
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 10 }}
+                onClick={() => scrollCarousel("right")}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-gray-900/70 rounded-full backdrop-blur-sm border border-gray-700 hover:bg-gray-800 transition-all duration-300 hidden md:flex items-center justify-center"
+                aria-label="View next project"
+              >
+                <ArrowRightCircle size={28} className="text-white/90" />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center mb-6 md:hidden"
+          >
+            <span className="text-sm text-gray-400 flex items-center gap-2">
+              <span>Swipe to explore</span>
+              <ArrowRightCircle size={16} className="animate-pulse" />
+            </span>
+          </motion.div>
+
+          <div
+            ref={carouselRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto py-8 px-4 md:px-16 hide-scrollbar scroll-smooth snap-x snap-mandatory"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            {projectsData.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                {...project}
+                isActive={index === activeIndex}
+                index={index}
+              />
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-8 gap-2">
+            {projectsData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? "bg-gradient-to-r from-blue-400 to-purple-500 w-6"
+                    : "bg-gray-600 hover:bg-gray-500"
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+    </section>
+  )
+}
+
+export default Projects
