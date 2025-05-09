@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+"use client"
 
+import { useEffect, useState } from "react"
+import PFP from "../assets/Images/PFP.jpg"
 const About = () => {
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
-    const section = document.querySelector("#about");
-    if (!section) return;
+    const section = document.querySelector("#about")
+    if (!section) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.5 }
-    );
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.5 })
 
-    observer.observe(section);
+    observer.observe(section)
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section
@@ -24,10 +22,7 @@ const About = () => {
       aria-labelledby="about-heading"
       className="bg-gray-900 text-white flex flex-col items-center justify-center py-16 px-4"
     >
-      <h1
-        id="about-heading"
-        className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8"
-      >
+      <h1 id="about-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
         About <span className="text-blue-400">Me</span>
       </h1>
 
@@ -40,47 +35,36 @@ const About = () => {
             }`}
           >
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 text-center md:text-left">
-              Hi! I’m{" "}
-              <span className="text-yellow-300 font-semibold">
-                Aviral Asthana
-              </span>
-              , a passionate{" "}
-              <span className="text-green-400">Full-Stack Developer</span>.
-              Currently, I’m honing my skills in{" "}
-              <span className="text-cyan-300">Go</span>, cloud computing, and
-              backend development, while advancing in technologies like Docker
-              and Kubernetes.
+              Hi! I'm <span className="text-yellow-300 font-semibold">Aviral Asthana</span>, a passionate{" "}
+              <span className="text-green-400">Full-Stack Developer</span>. Currently, I'm honing my skills in{" "}
+              <span className="text-cyan-300">Go</span>, cloud computing, and backend development, while advancing in
+              technologies like Docker and Kubernetes.
             </p>
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 text-center md:text-left">
-              With hands-on experience in the{" "}
-              <span className="text-purple-300 font-semibold">MERN stack</span>,
-              I’ve built efficient and scalable web applications. I thrive in
-              collaborative environments, contributing to{" "}
-              <span className="text-pink-300">open-source projects</span> and
-              crafting innovative solutions.
+              With hands-on experience in the <span className="text-purple-300 font-semibold">MERN stack</span>, I've
+              built efficient and scalable web applications. I thrive in collaborative environments, contributing to{" "}
+              <span className="text-pink-300">open-source projects</span> and crafting innovative solutions.
             </p>
             <p className="text-xl sm:text-2xl leading-relaxed text-center md:text-left">
-              Outside of coding, I’m deeply committed to continuous learning,
-              always striving to improve my skills and stay ahead in this
-              fast-paced tech landscape.
+              Outside of coding, I'm deeply committed to continuous learning, always striving to improve my skills and
+              stay ahead in this fast-paced tech landscape.
             </p>
           </div>
         </div>
 
-        {/* Lottie Animation */}
+        {/* Profile Picture */}
         <div className="md:w-1/2 flex justify-center">
-          <DotLottieReact
-            src="https://lottie.host/c9301de2-6970-4c5e-8b5d-668ca09c5cc3/ROvjZK9vmX.lottie"
-            loop
-            autoplay
-            style={{ width: "100%", maxWidth: "400px", height: "auto" }}
-            onError={() => console.error("Failed to load Lottie animation")}
-            aria-label="Animated illustration representing Aviral Asthana"
-          />
+          <div className="rounded-full overflow-hidden border-4 border-blue-400 shadow-lg shadow-blue-500/20">
+            <img
+              src={PFP}
+              alt="Aviral Asthana - Full Stack Developer"
+              className="w-full max-w-[300px] md:max-w-[350px] h-auto object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About
