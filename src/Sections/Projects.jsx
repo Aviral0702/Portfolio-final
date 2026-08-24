@@ -116,13 +116,9 @@ const projectsData = [
 const ProjectCard = ({ title, description, tags, link, github, image, isActive, index }) => {
   return (
     <motion.div
-      className={`flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] lg:w-[450px] h-[400px] sm:h-[450px] md:h-[500px] overflow-hidden flex justify-center items-center relative scroll-snap-align-center rounded-2xl transition-all duration-500 ease-in-out ${
-        isActive ? "scale-100 opacity-100 z-10" : "scale-95 opacity-70 z-0"
+      className={`flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] lg:w-[450px] h-[400px] sm:h-[450px] md:h-[500px] overflow-hidden relative scroll-snap-align-center rounded-md transition-all duration-500 ease-in-out card-spotify album-card p-0 ${
+        isActive ? "scale-100 opacity-100 z-10 border-spotify-green/40" : "scale-95 opacity-70 z-0"
       }`}
-      style={{ 
-        background: 'linear-gradient(135deg, #181818 0%, #282828 100%)',
-        border: '1px solid #404040'
-      }}
       initial={{ opacity: 0, y: 50 }}
       animate={{
         opacity: isActive ? 1 : 0.7,
@@ -135,36 +131,31 @@ const ProjectCard = ({ title, description, tags, link, github, image, isActive, 
           stiffness: 100,
         },
       }}
-      whileHover={{ 
-        scale: 1.02,
-        borderColor: '#1DB954',
-        boxShadow: '0 0 20px rgba(29, 185, 84, 0.3)'
-      }}
       layout
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-spotify-dark via-spotify-dark/80 to-transparent z-[1]" />
 
       <div className="w-full h-full flex flex-col justify-between p-4 sm:p-6 relative z-10">
         {image && (
-          <div className="absolute inset-0 z-0 opacity-20">
+          <div className="absolute inset-0 z-0 opacity-15">
             <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
           </div>
         )}
 
         <div className="flex flex-col h-full">
           <div className="mb-3 sm:mb-4">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">{title}</h2>
-            <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full" />
+            <div className="w-10 h-10 rounded-md bg-spotify-green/20 flex items-center justify-center mb-3 text-spotify-green font-black text-lg">
+              {title.charAt(0)}
+            </div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-spotify-text-primary mb-2 tracking-tight group-hover:text-spotify-green transition-colors">{title}</h2>
+            <div className="w-12 sm:w-16 h-1 bg-spotify-gradient rounded-full" />
           </div>
 
-          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-4 max-w-prose">{description}</p>
+          <p className="text-xs sm:text-sm md:text-base text-spotify-text-secondary mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-4 max-w-prose">{description}</p>
 
           <div className="flex flex-wrap gap-1 sm:gap-2 mt-auto">
             {tags.map((tag, i) => (
-              <span
-                key={`${tag}-${i}`}
-                className="bg-gray-800 text-gray-300 px-2 sm:px-3 py-1 rounded-lg text-xs font-medium border border-gray-600"
-              >
+              <span key={`${tag}-${i}`} className="chip-spotify">
                 {tag}
               </span>
             ))}
@@ -176,7 +167,7 @@ const ProjectCard = ({ title, description, tags, link, github, image, isActive, 
                 href={link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-black px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300"
+                className="flex items-center justify-center gap-2 btn-spotify !py-2 text-xs sm:text-sm"
                 aria-label={`Visit ${title} website`}
               >
                 <ExternalLink size={14} className="sm:w-4 sm:h-4" />
@@ -189,7 +180,7 @@ const ProjectCard = ({ title, description, tags, link, github, image, isActive, 
                 href={github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 border border-gray-600"
+                className="flex items-center justify-center gap-2 btn-spotify-ghost text-xs sm:text-sm"
                 aria-label={`View ${title} source code on GitHub`}
               >
                 <Github size={14} className="sm:w-4 sm:h-4" />
@@ -289,20 +280,20 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="pt-16 pb-8 sm:pt-24 sm:pb-12 md:pt-32 md:pb-16 lg:pt-48 lg:pb-24 px-4 sm:px-6 md:px-8 bg-black flex flex-col items-center overflow-hidden min-h-screen"
+      className="section-padding bg-spotify-dark-secondary flex flex-col items-center overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="container-max w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 md:mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16 px-2.5"
         >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
-            <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Projects</span>
+          <h1 className="section-heading mb-3 sm:mb-4">
+            <span className="gradient-text">Projects</span>
           </h1>
-          <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto rounded-full mb-4 sm:mb-6"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
+          <div className="section-divider mb-4 sm:mb-6" />
+          <p className="text-spotify-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
             Featured work from my resume, plus selected backend and product projects.
           </p>
         </motion.div>
@@ -315,10 +306,10 @@ const Projects = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
                 onClick={() => scrollCarousel("left")}
-                className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 z-20 p-2 sm:p-3 bg-gray-900/90 rounded-full backdrop-blur-sm border border-gray-600 hover:bg-gray-800 transition-all duration-300 flex items-center justify-center shadow-lg"
+                className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 z-20 p-2 sm:p-3 glass rounded-full hover:border-spotify-green/50 transition-all duration-300 flex items-center justify-center"
                 aria-label="View previous project"
               >
-                <ArrowLeftCircle size={20} className="sm:w-6 sm:h-6 text-white" />
+                <ArrowLeftCircle size={20} className="sm:w-6 sm:h-6 text-spotify-text-primary" />
               </motion.button>
             )}
 
@@ -328,10 +319,10 @@ const Projects = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 onClick={() => scrollCarousel("right")}
-                className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 z-20 p-2 sm:p-3 bg-gray-900/90 rounded-full backdrop-blur-sm border border-gray-600 hover:bg-gray-800 transition-all duration-300 flex items-center justify-center shadow-lg"
+                className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 z-20 p-2 sm:p-3 glass rounded-full hover:border-spotify-green/50 transition-all duration-300 flex items-center justify-center"
                 aria-label="View next project"
               >
-                <ArrowRightCircle size={20} className="sm:w-6 sm:h-6 text-white" />
+                <ArrowRightCircle size={20} className="sm:w-6 sm:h-6 text-spotify-text-primary" />
               </motion.button>
             )}
           </AnimatePresence>
@@ -359,10 +350,10 @@ const Projects = () => {
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === activeIndex
-                    ? "bg-spotify-green w-6"
-                    : "bg-spotify-dark-tertiary hover:bg-spotify-text-secondary"
+                    ? "bg-spotify-green w-8"
+                    : "bg-spotify-dark-tertiary hover:bg-spotify-text-tertiary"
                 }`}
                 aria-label={`Go to project ${index + 1}`}
               />

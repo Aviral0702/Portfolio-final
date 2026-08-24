@@ -98,32 +98,22 @@ const Skills = () => (
       {/* Additional info */}
       <motion.div 
         variants={itemVariants}
-        className="mt-16 text-center"
+        className="mt-16"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="card-spotify text-center">
-            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🚀</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            ["Languages", "Go, Java, Python, SQL, C++"],
+            ["Backend & Frontend", "Spring Boot, Node.js, React, Next.js"],
+            ["Event-Driven & Data", "Kafka, AWS SQS, S3, PostgreSQL, MySQL"],
+            ["Fintech / Banking", "CBS, KYC, RBAC, workflow orchestration"],
+            ["Cloud & DevOps", "AWS ECS, Docker, Kubernetes, CI/CD, Linux"],
+            ["AI-Native Tooling", "Cursor, Claude — daily production use"],
+          ].map(([label, value]) => (
+            <div key={label} className="card-spotify album-card text-left">
+              <p className="text-sm font-bold text-spotify-green mb-2 uppercase tracking-wide">{label}</p>
+              <p className="text-sm text-spotify-text-secondary leading-relaxed">{value}</p>
             </div>
-            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Fast Development</h3>
-            <p className="text-spotify-text-secondary">Quick prototyping and efficient development cycles</p>
-          </div>
-          
-          <div className="card-spotify text-center">
-            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🔧</span>
-            </div>
-            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Problem Solving</h3>
-            <p className="text-spotify-text-secondary">Creative solutions to complex technical challenges</p>
-          </div>
-          
-          <div className="card-spotify text-center">
-            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📈</span>
-            </div>
-            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Scalable Solutions</h3>
-            <p className="text-spotify-text-secondary">Building applications that grow with your needs</p>
-          </div>
+          ))}
         </div>
       </motion.div>
     </div>

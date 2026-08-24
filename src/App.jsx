@@ -36,6 +36,7 @@ function App() {
           keywords="Aviral Asthana, Backend Software Engineer, Go Developer, Java Spring Boot, Kafka, AWS, Core Banking, KYC, Fintech, Docker, Kubernetes, PostgreSQL"
         />
         <GoogleAnalytics />
+        <div className="spotify-player-bar" aria-hidden="true" />
         <Navbar />
 
       <div className="sections-container">

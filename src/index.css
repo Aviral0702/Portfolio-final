@@ -30,6 +30,10 @@ body {
   color: var(--spotify-text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(29, 185, 84, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(29, 185, 84, 0.06), transparent);
+  background-attachment: fixed;
 }
 
 /* Custom scrollbar */
@@ -69,16 +73,43 @@ html {
 
 /* Button styles */
 .btn-spotify {
-  @apply bg-spotify-green hover:bg-spotify-green-hover text-black font-semibold py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95;
+  @apply bg-spotify-green hover:bg-spotify-green-hover text-black font-bold py-3 px-8 rounded-full transition-all duration-200 hover:scale-[1.04] active:scale-95 shadow-spotify-green;
 }
 
 .btn-spotify-secondary {
-  @apply bg-transparent border border-spotify-green text-spotify-green hover:bg-spotify-green hover:text-black font-semibold py-3 px-6 rounded-full transition-all duration-200;
+  @apply bg-transparent border-2 border-spotify-text-secondary text-spotify-text-primary hover:border-spotify-green hover:text-spotify-green font-bold py-3 px-8 rounded-full transition-all duration-200;
 }
 
-/* Card styles */
+.btn-spotify-ghost {
+  @apply bg-spotify-dark-tertiary hover:bg-spotify-hover text-spotify-text-primary font-semibold py-2 px-5 rounded-full transition-all duration-200 border border-spotify-border hover:border-spotify-green/40;
+}
+
+/* Card styles — Spotify playlist-tile feel */
 .card-spotify {
-  @apply bg-spotify-dark-secondary hover:bg-spotify-dark-secondary/90 border border-spotify-border rounded-lg p-6 transition-all duration-200 hover:border-spotify-green/30;
+  @apply bg-spotify-dark-secondary hover:bg-[#2a2a2a] border border-spotify-border rounded-md p-6 transition-all duration-200 hover:border-spotify-green/40;
+}
+
+.album-card {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-spotify;
+}
+
+/* Tags / chips */
+.chip-spotify {
+  @apply px-3 py-1 bg-spotify-dark-tertiary text-spotify-text-secondary text-xs sm:text-sm font-medium rounded-full border border-spotify-border hover:border-spotify-green/50 hover:text-spotify-text-primary transition-colors duration-200;
+}
+
+/* Section headings */
+.section-heading {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-spotify-text-primary;
+}
+
+.section-divider {
+  @apply w-16 sm:w-20 md:w-24 h-1 bg-spotify-gradient mx-auto rounded-full;
+}
+
+/* Form inputs */
+.input-spotify {
+  @apply w-full px-4 py-3 bg-spotify-dark-tertiary text-spotify-text-primary border border-spotify-border rounded-md focus:ring-2 focus:ring-spotify-green focus:border-transparent transition-all duration-200 placeholder:text-spotify-text-tertiary;
 }
 
 /* Contact form specific styling */
@@ -159,6 +190,31 @@ html {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Spotify-style equalizer bars */
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.equalizer span {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--spotify-green);
+  animation: equalizer 1s ease-in-out infinite;
+}
+
+.equalizer span:nth-child(1) { height: 40%; animation-delay: 0s; }
+.equalizer span:nth-child(2) { height: 70%; animation-delay: 0.15s; }
+.equalizer span:nth-child(3) { height: 100%; animation-delay: 0.3s; }
+.equalizer span:nth-child(4) { height: 55%; animation-delay: 0.45s; }
+
+@keyframes equalizer {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
 /* Hide scrollbar for specific elements */
 .hide-scrollbar {
   -ms-overflow-style: none;
@@ -237,4 +293,9 @@ html {
   flex: 0 0 100%;
   width: 100vw;
   height: 100vh;
+}
+
+/* Spotify now-playing bar accent */
+.spotify-player-bar {
+  @apply fixed bottom-0 left-0 right-0 h-1 bg-spotify-gradient z-50 pointer-events-none;
 }

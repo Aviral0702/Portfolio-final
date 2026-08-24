@@ -63,7 +63,7 @@ function Techandtools() {
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="group p-4 sm:p-6 bg-spotify-dark-tertiary text-spotify-text-primary rounded-xl shadow-spotify-card hover:shadow-spotify-green/20 transition-all duration-300 flex flex-col items-center gap-3 hover:scale-105 hover:bg-spotify-dark-secondary border border-spotify-border hover:border-spotify-green/30"
+            className="group card-spotify album-card flex flex-col items-center gap-3 p-4 sm:p-6"
             title={tool.name}
             role="listitem"
           >

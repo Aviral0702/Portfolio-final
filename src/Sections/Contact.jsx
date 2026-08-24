@@ -117,7 +117,21 @@ const Contact = () => {
               className="space-y-6 contact-form"
               noValidate
             >
-              <Toaster />
+              <Toaster
+                toastOptions={{
+                  style: {
+                    background: '#282828',
+                    color: '#fff',
+                    border: '1px solid #404040',
+                  },
+                  success: {
+                    iconTheme: { primary: '#1DB954', secondary: '#121212' },
+                  },
+                  error: {
+                    iconTheme: { primary: '#f87171', secondary: '#121212' },
+                  },
+                }}
+              />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-spotify-text-primary">
                   Name *
@@ -128,8 +142,8 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-spotify-dark-tertiary text-spotify-text-primary border rounded-lg focus:ring-2 focus:ring-spotify-green focus:border-transparent transition-all duration-200 ${
-                    errors.name ? "border-red-500" : "border-spotify-border"
+                  className={`input-spotify ${
+                    errors.name ? "border-red-500" : ""
                   }`}
                   required
                 />
@@ -146,8 +160,8 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-spotify-dark-tertiary text-spotify-text-primary border rounded-lg focus:ring-2 focus:ring-spotify-green focus:border-transparent transition-all duration-200 ${
-                    errors.email ? "border-red-500" : "border-spotify-border"
+                  className={`input-spotify ${
+                    errors.email ? "border-red-500" : ""
                   }`}
                   required
                 />
@@ -164,8 +178,8 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-spotify-dark-tertiary text-spotify-text-primary border rounded-lg focus:ring-2 focus:ring-spotify-green focus:border-transparent transition-all duration-200 ${
-                    errors.subject ? "border-red-500" : "border-spotify-border"
+                  className={`input-spotify ${
+                    errors.subject ? "border-red-500" : ""
                   }`}
                   required
                 />
@@ -181,8 +195,8 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-spotify-dark-tertiary text-spotify-text-primary border rounded-lg focus:ring-2 focus:ring-spotify-green focus:border-transparent min-h-[150px] transition-all duration-200 ${
-                    errors.message ? "border-red-500" : "border-spotify-border"
+                  className={`input-spotify min-h-[150px] ${
+                    errors.message ? "border-red-500" : ""
                   }`}
                   required
                 />

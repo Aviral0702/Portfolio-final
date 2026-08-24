@@ -72,10 +72,7 @@ const About = () => {
               <h3 className="text-lg font-semibold text-spotify-text-primary mb-4">Core Skills</h3>
               <div className="flex flex-wrap gap-3">
                 {['Go', 'Java/Spring Boot', 'Kafka', 'AWS SQS', 'PostgreSQL', 'Core Banking', 'KYC/Onboarding', 'Docker', 'Kubernetes', 'Cursor & Claude'].map((skill) => (
-                  <span 
-                    key={skill}
-                    className="px-4 py-2 bg-spotify-dark-tertiary text-spotify-text-secondary text-sm rounded-full border border-spotify-border hover:border-spotify-green/50 transition-colors duration-200"
-                  >
+                  <span key={skill} className="chip-spotify">
                     {skill}
                   </span>
                 ))}

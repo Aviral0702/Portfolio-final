@@ -51,19 +51,21 @@ const itemVariants = {
 // Separate component for project card to improve readability
 const ProjectCard = ({ project }) => (
   <motion.div variants={itemVariants} className="w-full md:w-1/2 lg:w-1/2 px-4 mb-8">
-    <div className="group h-full card-spotify overflow-hidden hover:border-spotify-green/50 transition-all duration-300 rounded-xl flex flex-col">
-      <div className="relative overflow-hidden h-48">
-        <div className="absolute inset-0 bg-gradient-to-t from-spotify-dark to-transparent z-10 opacity-60"></div>
+    <div className="group h-full card-spotify album-card overflow-hidden flex flex-col p-0">
+      <div className="relative overflow-hidden h-48 bg-spotify-dark-tertiary">
+        <div className="absolute inset-0 bg-gradient-to-br from-spotify-green/20 via-spotify-dark-secondary to-spotify-dark z-10" />
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full bg-spotify-dark-tertiary flex items-center justify-center">
-            <span className="text-spotify-text-secondary font-medium">{project.title}</span>
+          <div className="absolute inset-0 flex items-center justify-center z-20">
+            <span className="text-5xl font-black text-spotify-green/40 group-hover:text-spotify-green/60 transition-colors">
+              {project.title.charAt(0)}
+            </span>
           </div>
         )}
       </div>
@@ -80,7 +82,7 @@ const ProjectCard = ({ project }) => (
           {project.tags.map((tech, index) => (
             <span
               key={`${project.id}-tag-${index}`}
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-spotify-dark-tertiary text-spotify-text-secondary border border-spotify-border hover:border-spotify-green/50 transition-colors"
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium chip-spotify"
             >
               {tech}
             </span>
@@ -93,7 +95,7 @@ const ProjectCard = ({ project }) => (
             href={project.demoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-spotify-green hover:bg-spotify-green-hover text-spotify-dark transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-spotify-green focus:ring-offset-2 focus:ring-offset-spotify-dark"
+            className="inline-flex items-center justify-center rounded-full text-sm font-bold h-9 px-4 py-2 btn-spotify !py-2"
             aria-label={`View live demo of ${project.title}`}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
@@ -104,7 +106,7 @@ const ProjectCard = ({ project }) => (
           href={project.codeLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-transparent border border-spotify-border text-spotify-text-secondary hover:bg-spotify-dark-tertiary transition-colors focus:outline-none focus:ring-2 focus:ring-spotify-border focus:ring-offset-2 focus:ring-offset-spotify-dark"
+          className="inline-flex items-center justify-center rounded-full text-sm font-semibold h-9 px-4 py-2 btn-spotify-ghost"
           aria-label={`View source code of ${project.title}`}
         >
           <Github className="mr-2 h-4 w-4" />

@@ -16,7 +16,7 @@ const Home = () => (
         <img
           src={bg}
           alt="Background"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-10"
         />
       </div>
 
@@ -38,7 +38,13 @@ const Home = () => (
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center flex flex-col items-center md:items-start md:text-left flex-1"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-spotify-text-primary">
+            <div className="flex items-center gap-3 mb-2 justify-center md:justify-start">
+              <div className="equalizer" aria-hidden="true">
+                <span /><span /><span /><span />
+              </div>
+              <span className="text-xs uppercase tracking-[0.2em] text-spotify-green font-semibold">Now building</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 text-spotify-text-primary tracking-tight">
               <span className="block">Hi, I'm</span>
               <div className="gradient-text">
                 <Typewriter
@@ -85,10 +91,7 @@ const Home = () => (
             {/* Tech stack preview */}
             <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-3">
               {["Go", "Java/Spring Boot", "Kafka", "AWS", "PostgreSQL", "Docker & Kubernetes"].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 bg-spotify-dark-tertiary text-spotify-text-secondary text-sm rounded-full border border-spotify-border"
-                >
+                <span key={skill} className="chip-spotify">
                   {skill}
                 </span>
               ))}
