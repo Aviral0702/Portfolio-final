@@ -6,6 +6,18 @@ import { ArrowLeftCircle, ArrowRightCircle, ExternalLink, Github } from "lucide-
 
 const projectsData = [
   {
+    id: "querywise",
+    title: "QueryWise",
+    description:
+      "A single-binary Go CLI that reads PostgreSQL pg_stat_statements and ranks the most expensive query patterns by a weighted cost heuristic across execution time, I/O, and call frequency. Query text is fingerprinted locally via SHA-256/HMAC and discarded so raw SQL is never stored. Optional Claude recommendations send only fingerprints and metrics. Exports terminal, Markdown, and JSON reports.",
+    tags: ["Go", "PostgreSQL", "Claude API", "CLI"],
+    hueA: 200,
+    hueB: 240,
+    link: "",
+    github: "https://github.com/Aviral0702/QueryWiseProd",
+    image: "/placeholder.svg?height=300&width=500",
+  },
+  {
     id: "chattos",
     title: "Chattos",
     description:
@@ -14,7 +26,7 @@ const projectsData = [
     hueA: 180,
     hueB: 200,
     link: "https://chattos-hazel.vercel.app",
-    github: "https://github.com/yourusername/chattos",
+    github: "https://github.com/Aviral0702/chat-application",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -26,7 +38,7 @@ const projectsData = [
     hueA: 220,
     hueB: 240,
     link: "",
-    github: "https://github.com/yourusername/performance-api",
+    github: "https://github.com/Aviral0702/PerformanceAPI",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -37,18 +49,7 @@ const projectsData = [
     hueA: 220,
     hueB: 240,
     link: "https://www.npmjs.com/package/unique-js-formatter",
-    github: "https://github.com/yourusername/js-formatter",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "whiteboard",
-    title: "Online Collaborative whiteboard",
-    description: "Online collaborative Whiteboard which allows multiple users to draw on the same canvas in real-time.",
-    tags: ["React", "Node.js", "Vercel", "TailwindCSS", "Socket.io"],
-    hueA: 210,
-    hueB: 230,
-    link: "https://online-collaborative-whiteboard.vercel.app/",
-    github: "https://github.com/yourusername/whiteboard",
+    github: "https://github.com/Aviral0702/JS-CodeFormat-Package-npm",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -60,7 +61,7 @@ const projectsData = [
     hueA: 200,
     hueB: 220,
     link: "https://podexo.vercel.app/",
-    github: "https://github.com/yourusername/podexo",
+    github: "https://github.com/Aviral0702/Podexo",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -84,30 +85,7 @@ const projectsData = [
     hueA: 140,
     hueB: 160,
     link: "https://byte-bazaar-beta.vercel.app/",
-    github: "https://github.com/yourusername/bytebazaar",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "meh-ai",
-    title: "Meh-Your Own AI Friend",
-    description: "A simple AI friend that can chat with you.",
-    tags: ["React", "TailwindCSS", "OpenAI"],
-    hueA: 140,
-    hueB: 160,
-    link: "https://me-your-own-ai-friend.vercel.app/",
-    github: "https://github.com/yourusername/meh-ai",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "dice-game",
-    title: "Guess the number on dice",
-    description:
-      " A simple game where the user has to guess the number on the dice. The user has 3 chances to guess the correct number.",
-    tags: ["React", "TailwindCSS"],
-    hueA: 130,
-    hueB: 150,
-    link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
-    github: "https://github.com/yourusername/dice-game",
+    github: "https://github.com/Aviral0702/ByteBazaar",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -117,19 +95,8 @@ const projectsData = [
     tags: ["Golang", "Helm", "Kubernetes"],
     hueA: 220,
     hueB: 160,
-    link: "https://vercel.com/aviral-asthanas-projects-dbd1be85/project-3-dice-game",
-    github: "https://github.com/yourusername/go-rest-api",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "endless-issues",
-    title: "EndlessIssues",
-    description: "This is a simple issue tracker to track my progress in Tech Journey.",
-    tags: ["React", "TailwindCSS", "GitHub Pages"],
-    hueA: 160,
-    hueB: 200,
     link: "",
-    github: "https://github.com/yourusername/endless-issues",
+    github: "https://github.com/Aviral0702/Go-Lang-REST-API-Helm-Chart",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
@@ -141,7 +108,7 @@ const projectsData = [
     hueA: 200,
     hueB: 150,
     link: "",
-    github: "https://github.com/yourusername/cses-extension",
+    github: "https://github.com/Aviral0702/CSES-Chrome-Extension",
     image: "/placeholder.svg?height=300&width=500",
   },
 ]
@@ -311,8 +278,7 @@ const Projects = () => {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Projects</span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A collection of my recent work and personal projects. Each project represents a unique challenge and
-            learning experience.
+            Featured work from the resume, plus selected backend and product projects.
           </p>
         </motion.div>
 

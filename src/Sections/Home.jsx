@@ -3,7 +3,7 @@ import bg from "../assets/Images/2040596_275310-P5VU87-469.jpg";
 import astronaut from "../assets/Images/rb_38616.png";
 import Typewriter from "typewriter-effect";
 import { Button } from "flowbite-react";
-import Resume from "../assets/resume/Aviral_asthana_Cl.pdf";
+import Resume from "../assets/resume/Aviral_Asthana_resume_v1.pdf";
 import fileIcon from "../assets/icons/file.png";
 import LatestWork from "./LatestWork";
 
@@ -37,11 +37,11 @@ const Home = () => (
             </h1>
 
             <h2 className="text-xl sm:text-2xl md:text-4xl mb-4 text-gray-400">
-              Back-End / Full Stack Developer
+              Backend Software Engineer
             </h2>
 
             <p className="text-sm sm:text-base md:text-lg max-w-2xl text-fuchsia-200 mx-auto md:mx-0">
-              I am a Back-End / Full-Stack Developer with experience in building web applications using Node.js, Express.js, and React.js.
+              I build production backend systems in Go and Java — core banking integrations, KYC/onboarding, event-driven services on Kafka and AWS SQS, and React dashboards for ops.
             </p>
 
             <Button

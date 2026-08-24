@@ -3,37 +3,28 @@
 const Experience = () => {
   const experiences = [
     {
-      role: "Backend Engineering Intern",
+      role: "Backend Software Engineer",
       company: "Aspora",
       duration: "April 2025 - Present",
+      tags: ["Go", "Java", "Spring Boot", "Kafka", "AWS", "React"],
       description: [
-        "Developing and maintaining backend services using Java Spring Boot",
-        "Building RESTful APIs for enterprise applications",
-        "Collaborating with frontend team to integrate React components",
-        "Implementing database solutions and optimizing queries",
-        "Participating in code reviews and agile development processes"
+        "Independently built the end-to-end RFI flow from 0 to 1 — a backend-driven workflow orchestrator powering web and mobile screens, now live for 500+ users. Mentored another engineer along the way.",
+        "Owned Go backend services for Aspora’s NRI Banking product end to end, integrating with the Core Banking System for onboarding, KYC, and transactions — 1,000+ real bank accounts opened.",
+        "Built an in-house AI OCR pipeline with the Adapter pattern and feature flags across LlamaParse v2, Claude Sonnet, and Landing AI, replacing a recurring Persona vendor bill.",
+        "Contributed to two event-driven services on Kafka/AWS SQS: a multi-tenant Communications Service and a compliance-grade Audit Service (event bus → S3 → REST trails).",
+        "Designed and shipped Pulse, an internal CRM in Java/Spring Boot with bank-grade RBAC — 50+ agents, sub-1-day ticket TAT.",
+        "Cut a critical API from 10+ seconds to <250ms (40x) with CompletableFuture, better indexes, and Redis caching.",
+        "Shipped React dashboards on Alphadesk for real-time order and transaction monitoring.",
       ],
     },
     {
-      role: "Open Source Contributor",
-      company: "Meshery",
-      duration: "June 2024 - Present",
-      description: [
-        "Working as an open-source contributor for Meshery",
-        "Contributed to the development of the Meshery project",
-        "Implemented features and bug fixes",
-        "Enhanced the overall performance and scalability"
-      ],
-    },
-    {
-      role: "Full-stack Web Developer",
+      role: "Web Developer Intern",
       company: "Codestam Technologies",
-      duration: "March 2024 - May 2024",
+      duration: "March 2024 - April 2024",
+      tags: ["Node.js", "Express.js", "PostgreSQL", "MongoDB"],
       description: [
-        "Interning as Full-stack Web Developer",
-        "Architected and designed the front-end of the web application using React JS",
-        "Integrated payment gateway and developed the subscription model",
-        "Implemented features to incorporate customer analytics"
+        "Built backend services and REST APIs with Node.js and Express.js; the team delivered projects 20% faster through clearer backend architecture.",
+        "Shipped real-time chat backends with WebSockets, e-commerce APIs with payment processing, and admin services on PostgreSQL and MongoDB for 1,000+ active users.",
       ],
     },
   ]
@@ -83,24 +74,13 @@ const Experience = () => {
                   ))}
                 </ul>
 
-                {/* Special buttons for specific companies */}
-                {exp.company === "Meshery" && (
-                  <div className="mt-4 sm:mt-6">
-                    <a
-                      href="https://layer5.io/community/members/aviral-asthana"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-md hover:opacity-90 transition-all duration-300 text-xs sm:text-sm font-medium hover:scale-105"
-                    >
-                      View Profile
-                    </a>
-                  </div>
-                )}
-                {exp.company === "Aspora" && (
-                  <div className="mt-4 sm:mt-6 flex gap-3">
-                    <span className="text-xs px-2 py-1 bg-gray-700 rounded-md">Java</span>
-                    <span className="text-xs px-2 py-1 bg-gray-700 rounded-md">Spring Boot</span>
-                    <span className="text-xs px-2 py-1 bg-gray-700 rounded-md">React</span>
+                {exp.tags?.length > 0 && (
+                  <div className="mt-4 sm:mt-6 flex flex-wrap gap-3">
+                    {exp.tags.map((tag) => (
+                      <span key={tag} className="text-xs px-2 py-1 bg-gray-700 rounded-md">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 )}
               </div>

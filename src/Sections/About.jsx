@@ -35,19 +35,20 @@ const About = () => {
             }`}
           >
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 text-center md:text-left">
-              Hi! I'm <span className="text-yellow-300 font-semibold">Aviral Asthana</span>, a passionate{" "}
-              <span className="text-green-400">Full-Stack Developer</span>. Currently, I'm honing my skills in{" "}
-              <span className="text-cyan-300">Go</span>, cloud computing, and backend development, while advancing in
-              technologies like Docker and Kubernetes.
+              Hi! I'm <span className="text-yellow-300 font-semibold">Aviral Asthana</span>, a{" "}
+              <span className="text-green-400">Backend Software Engineer</span> at Aspora. I own Go and Java services
+              for NRI banking — onboarding, KYC, and transactions against the Core Banking System — and ship workflow
+              orchestration used on both web and mobile.
             </p>
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 text-center md:text-left">
-              With hands-on experience in the <span className="text-purple-300 font-semibold">MERN stack</span>, I've
-              built efficient and scalable web applications. I thrive in collaborative environments, contributing to{" "}
-              <span className="text-pink-300">open-source projects</span> and crafting innovative solutions.
+              Day to day I work with{" "}
+              <span className="text-cyan-300">Go, Java/Spring Boot, Kafka, AWS, PostgreSQL</span>, and React when ops
+              needs a dashboard. I use Cursor and Claude daily to scaffold services, write tests, and ship production
+              code.
             </p>
             <p className="text-xl sm:text-2xl leading-relaxed text-center md:text-left">
-              Outside of coding, I'm deeply committed to continuous learning, always striving to improve my skills and
-              stay ahead in this fast-paced tech landscape.
+              I'm a B.Tech Computer Science student at{" "}
+              <span className="text-purple-300 font-semibold">IIIT Nagpur</span> (Nov 2022 – May 2026), CGPA 7.8/10.0.
             </p>
           </div>
         </div>
@@ -57,7 +58,7 @@ const About = () => {
           <div className="rounded-full overflow-hidden border-4 border-blue-400 shadow-lg shadow-blue-500/20">
             <img
               src={PFP}
-              alt="Aviral Asthana - Full Stack Developer"
+              alt="Aviral Asthana - Backend Software Engineer"
               className="w-full max-w-[300px] md:max-w-[350px] h-auto object-cover"
             />
           </div>

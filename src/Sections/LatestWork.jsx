@@ -1,34 +1,29 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
-
-// Import images with proper Next.js Image optimization
-import chattosImage from "../assets/Images/chattos.png";
-import testifAIImage from "../assets/Images/testifAI.png";
 
 // Sample project data - moved outside component to prevent recreation on each render
 const projectsData = [
   {
-    id: "testifAI",
-    title: "TestifAI",
+    id: "querywise",
+    title: "QueryWise",
     description:
-      "TestifAI is a web application that uses AI to automatically generate test cases for your code. It uses machine learning models to predict the test cases based on the code snippet provided.",
-    tags: ["Next.js", "TailwindCSS", "TensorFlow", "Heroku", "Vercel", "PostgreSQL"],
-    demoLink: "https://test-ai-one.vercel.app/",
-    codeLink: "https://github.com/Aviral0702/testAI/",
-    image: testifAIImage,
+      "Cloud DB cost optimization CLI in Go. Reads PostgreSQL pg_stat_statements, ranks expensive query patterns, fingerprints SQL locally so raw queries never leave the machine, and optionally asks Claude for tuning tips using fingerprints and metrics only.",
+    tags: ["Go", "PostgreSQL", "Claude API", "CLI"],
+    demoLink: "",
+    codeLink: "https://github.com/Aviral0702/QueryWiseProd",
+    image: null,
   },
   {
-    id: "chattos",
-    title: "Chattos",
+    id: "rate-limiter",
+    title: "API Rate Limiter",
     description:
-      "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users. It uses Convex for real-time communication and Vercel for deployment.",
-    tags: ["Next.js", "TailwindCSS", "Convex", "Vercel"],
-    demoLink: "https://chattos-hazel.vercel.app",
-    codeLink: "https://github.com/Aviral0702/chat-application",
-    image: chattosImage,
+      "An API rate limiter that caps how many requests a client can make in a time window, built with Node.js, Express, Redis, Docker, and MongoDB.",
+    tags: ["Node.js", "Express", "Redis", "Docker"],
+    demoLink: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
+    codeLink: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
+    image: null,
   },
 ];
 
@@ -68,8 +63,8 @@ const ProjectCard = ({ project }) => (
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full bg-slate-700 flex items-center justify-center">
-            <span className="text-slate-500">No image available</span>
+          <div className="w-full h-full bg-gradient-to-br from-purple-900/40 to-slate-800 flex items-center justify-center">
+            <span className="text-slate-300 font-medium">{project.title}</span>
           </div>
         )}
       </div>
@@ -94,16 +89,18 @@ const ProjectCard = ({ project }) => (
         </div>
       </div>
       <div className="px-6 pb-6 pt-0 flex flex-wrap gap-3">
-        <a
-          href={project.demoLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-          aria-label={`View live demo of ${project.title}`}
-        >
-          <ExternalLink className="mr-2 h-4 w-4" />
-          Live Demo
-        </a>
+        {project.demoLink && (
+          <a
+            href={project.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+            aria-label={`View live demo of ${project.title}`}
+          >
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Live Demo
+          </a>
+        )}
         <a
           href={project.codeLink}
           target="_blank"
@@ -145,8 +142,7 @@ export default function LatestWork() {
             </h2>
             <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
             <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
-              Here are some of my recent projects that showcase my technical
-              skills and problem-solving abilities.
+              QueryWise is the project on my current resume. Also included is a backend systems project that matches how I work today.
             </p>
           </motion.div>
         </div>

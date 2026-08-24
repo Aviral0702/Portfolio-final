@@ -62,8 +62,23 @@ const Skills = () => (
         transition={{ duration: 0.8, delay: 0.3 }}
       />
       <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
-        Technologies I've worked with and mastered throughout my journey
+        Stack I use in production at Aspora, plus the languages and tools from my resume.
       </p>
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-left max-w-4xl mx-auto">
+        {[
+          ["Languages", "Go, Java, Python, SQL, C++"],
+          ["Backend & Frontend", "Spring Boot, Node.js, React.js, Next.js"],
+          ["Event-Driven & Data", "Kafka, AWS SQS, AWS S3, PostgreSQL, MySQL"],
+          ["Fintech / Banking", "CBS integration, KYC/onboarding, RBAC, workflow orchestration"],
+          ["Cloud & DevOps", "AWS (ECS, CloudWatch, Secrets Manager), Docker, Kubernetes, Git, CI/CD, Linux"],
+          ["AI-Native Tooling", "Cursor, Claude (daily use for production code)"],
+        ].map(([label, value]) => (
+          <div key={label} className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
+            <p className="text-sm font-semibold text-purple-300 mb-1">{label}</p>
+            <p className="text-sm text-gray-300">{value}</p>
+          </div>
+        ))}
+      </div>
     </motion.div>
 
     {/* Content */}

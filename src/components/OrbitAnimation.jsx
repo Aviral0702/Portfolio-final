@@ -1,7 +1,6 @@
 import React from "react";
 import "./OrbitAnimation.css";
 import reactsrc from "../assets/icons/react.png";
-import reduxsrc from "../assets/icons/redux.png";
 import tailwindsrc from "../assets/icons/tailwind.png";
 import jssrc from "../assets/icons/javascript.png";
 import nodesrc from "../assets/icons/node.png";
@@ -11,37 +10,34 @@ import tssrc from "../assets/icons/TypeScript.png";
 import gosrc from "../assets/icons/golang.png";
 import gitsrc from "../assets/icons/Git.png";
 import githubsrc from "../assets/icons/GitHub.png";
-import firebasesrc from "../assets/icons/Firebase.png";
 import dockersrc from "../assets/icons/Docker.png";
 import linuxsrc from "../assets/icons/Linux.png";
 import nextsrc from "../assets/icons/Next.js.png";
 import postmansrc from "../assets/icons/Postman.png";
-import graphqlsrc from "../assets/icons/GraphQL.png";
+import dockerksrc from "../assets/icons/kubernetes.png";
 import redissrc from "../assets/icons/Redis.png";
 
 const OrbitAnimation = () => {
   const innerRingLogos = [
-    { src: mongodbsrc, alt: "MongoDB Logo" },
-    { src: expresssrc, alt: "Express Logo" },
-    { src: tssrc, alt: "TypeScript Logo" },
     { src: gosrc, alt: "Go Logo" },
-    { src: gitsrc, alt: "Git Logo" },
-    { src: githubsrc, alt: "GitHub Logo" },
+    { src: dockersrc, alt: "Docker Logo" },
+    { src: dockerksrc, alt: "Kubernetes Logo" },
+    { src: redissrc, alt: "Redis Logo" },
+    { src: nodesrc, alt: "Node.js Logo" },
+    { src: linuxsrc, alt: "Linux Logo" },
   ];
   
   const outerRingLogos = [
     { src: reactsrc, alt: "React Logo" },
-    { src: reduxsrc, alt: "Redux Logo" },
-    { src: tailwindsrc, alt: "Tailwind Logo" },
-    { src: jssrc, alt: "JavaScript Logo" },
-    { src: nodesrc, alt: "Node.js Logo" },
-    { src: firebasesrc, alt: "Firebase Logo" },
-    { src: dockersrc, alt: "Docker Logo" },
-    { src: linuxsrc, alt: "Linux Logo" },
     { src: nextsrc, alt: "Next.js Logo" },
+    { src: expresssrc, alt: "Express Logo" },
+    { src: tssrc, alt: "TypeScript Logo" },
+    { src: jssrc, alt: "JavaScript Logo" },
+    { src: mongodbsrc, alt: "MongoDB Logo" },
+    { src: gitsrc, alt: "Git Logo" },
+    { src: githubsrc, alt: "GitHub Logo" },
+    { src: tailwindsrc, alt: "Tailwind Logo" },
     { src: postmansrc, alt: "Postman Logo" },
-    { src: graphqlsrc, alt: "GraphQL Logo" },
-    { src: redissrc, alt: "Redis Logo" },
   ];
 
   return (
