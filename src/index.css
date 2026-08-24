@@ -299,3 +299,72 @@ html {
 .spotify-player-bar {
   @apply fixed bottom-0 left-0 right-0 h-1 bg-spotify-gradient z-50 pointer-events-none;
 }
+
+/* Blog markdown content */
+.blog-content {
+  @apply text-spotify-text-secondary leading-relaxed space-y-6;
+}
+
+.blog-content h2 {
+  @apply text-2xl font-bold text-spotify-text-primary mt-10 mb-4;
+}
+
+.blog-content h3 {
+  @apply text-xl font-semibold text-spotify-text-primary mt-8 mb-3;
+}
+
+.blog-content p {
+  @apply text-base leading-7;
+}
+
+.blog-content strong {
+  @apply text-spotify-text-primary font-semibold;
+}
+
+.blog-content a {
+  @apply text-spotify-green hover:text-spotify-green-hover underline underline-offset-4;
+}
+
+.blog-content ul,
+.blog-content ol {
+  @apply pl-6 space-y-2;
+}
+
+.blog-content ul {
+  @apply list-disc;
+}
+
+.blog-content ol {
+  @apply list-decimal;
+}
+
+.blog-content li {
+  @apply text-spotify-text-secondary;
+}
+
+.blog-content code {
+  @apply bg-spotify-dark-tertiary text-spotify-green px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.blog-content pre {
+  @apply bg-spotify-dark-secondary border border-spotify-border rounded-md p-4 overflow-x-auto;
+}
+
+.blog-content pre code {
+  @apply bg-transparent p-0 text-spotify-text-primary;
+}
+
+.blog-content hr {
+  @apply border-spotify-border my-8;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-spotify-green pl-4 italic text-spotify-text-secondary;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

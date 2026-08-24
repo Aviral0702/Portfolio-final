@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/Images/portfolio logo.png";
 import linkedin from "../assets/social media icons/linkedin_2504923.png";
@@ -11,6 +12,10 @@ import { trackSocialClick } from "../config/analytics";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isBlog = location.pathname.startsWith("/blog");
+
+  const portfolioHref = (hash) => (isBlog ? `/${hash}` : hash);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +30,13 @@ function Navbar() {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: portfolioHref("#home"), label: "Home" },
+    { href: portfolioHref("#about"), label: "About" },
+    { href: portfolioHref("#skills"), label: "Skills" },
+    { href: portfolioHref("#experience"), label: "Experience" },
+    { href: portfolioHref("#projects"), label: "Projects" },
+    { to: "/blog", label: "Blog", isRoute: true },
+    { href: portfolioHref("#contact"), label: "Contact" },
   ];
 
   const socialLinks = [
@@ -56,6 +62,31 @@ function Navbar() {
     },
   ];
 
+  const linkClass = (active = false) =>
+    `transition-colors duration-200 font-medium relative group ${
+      active ? "text-spotify-green" : "text-spotify-text-secondary hover:text-spotify-text-primary"
+    }`;
+
+  const NavItem = ({ link, onClick }) => {
+    const active = link.isRoute && location.pathname.startsWith(link.to);
+
+    if (link.isRoute) {
+      return (
+        <Link to={link.to} className={linkClass(active)} onClick={onClick}>
+          {link.label}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-spotify-green transition-all duration-300 ${active ? "w-full" : "w-0 group-hover:w-full"}`} />
+        </Link>
+      );
+    }
+
+    return (
+      <a href={link.href} className={linkClass()} onClick={onClick}>
+        {link.label}
+        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-spotify-green transition-all duration-300 group-hover:w-full" />
+      </a>
+    );
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       scrolled 
@@ -63,7 +94,7 @@ function Navbar() {
         : 'bg-transparent'
     }`}>
       <div className="flex justify-between items-center py-4 px-6 md:px-8 max-w-7xl mx-auto">
-        <a href="/" className="flex items-center group" aria-label="Homepage">
+        <Link to="/" className="flex items-center group" aria-label="Homepage">
           <div className="relative">
             <img
               src={logo}
@@ -72,7 +103,7 @@ function Navbar() {
             />
             <div className="absolute inset-0 w-12 h-12 md:w-14 md:h-14 bg-spotify-green/20 rounded-full blur-md group-hover:bg-spotify-green/30 transition-all duration-300"></div>
           </div>
-        </a>
+        </Link>
 
         {/* Hamburger Icon */}
         <button
@@ -86,14 +117,7 @@ function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-spotify-text-secondary hover:text-spotify-text-primary transition-colors duration-200 font-medium relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-spotify-green transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            <NavItem key={link.label} link={link} />
           ))}
         </div>
 
@@ -131,14 +155,7 @@ function Navbar() {
             <div className="py-6 px-6 space-y-6">
               <div className="flex flex-col items-center space-y-4">
                 {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-spotify-text-primary hover:text-spotify-green transition-colors duration-200 font-medium text-lg"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
+                  <NavItem key={link.label} link={link} onClick={() => setIsMenuOpen(false)} />
                 ))}
               </div>
               <div className="flex justify-center space-x-6 pt-4 border-t border-spotify-border">
