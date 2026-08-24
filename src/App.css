@@ -1,0 +1,13 @@
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100vh;
+}
+
+.section {
+  flex: 0 0 100%;
+  width: 100vw;
+  height: 100vh;
+}

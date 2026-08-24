@@ -36,98 +36,97 @@ const Skills = () => (
     whileInView="visible"
     viewport={{ once: true, margin: "-50px" }}
     variants={containerVariants}
-    className="relative min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white flex flex-col items-center justify-center py-12 md:py-24 px-4 md:px-8 overflow-hidden"
+    className="section-padding bg-spotify-dark relative overflow-hidden"
   >
     {/* Background elements */}
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-purple-900/20 blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-blue-900/20 blur-3xl"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-spotify-green/5 blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-spotify-green/3 blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-spotify-green/2 blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
     </div>
 
-    {/* Header */}
-    <motion.div 
-      variants={itemVariants}
-      className="relative z-10 text-center mb-12 md:mb-20"
-    >
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
-          Skills & Expertise
-        </span>
-      </h1>
+    <div className="container-max relative z-10">
+      {/* Header */}
       <motion.div 
-        className="h-1 w-24 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      />
-      <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
-        Stack I use in production at Aspora, plus the languages and tools from my resume.
-      </p>
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-left max-w-4xl mx-auto">
-        {[
-          ["Languages", "Go, Java, Python, SQL, C++"],
-          ["Backend & Frontend", "Spring Boot, Node.js, React.js, Next.js"],
-          ["Event-Driven & Data", "Kafka, AWS SQS, AWS S3, PostgreSQL, MySQL"],
-          ["Fintech / Banking", "CBS integration, KYC/onboarding, RBAC, workflow orchestration"],
-          ["Cloud & DevOps", "AWS (ECS, CloudWatch, Secrets Manager), Docker, Kubernetes, Git, CI/CD, Linux"],
-          ["AI-Native Tooling", "Cursor, Claude (daily use for production code)"],
-        ].map(([label, value]) => (
-          <div key={label} className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
-            <p className="text-sm font-semibold text-purple-300 mb-1">{label}</p>
-            <p className="text-sm text-gray-300">{value}</p>
+        variants={itemVariants}
+        className="text-center mb-12 sm:mb-16 px-2.5"
+      >
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
+          <span className="gradient-text">Skills</span> & Expertise
+        </h1>
+        <div className="w-16 sm:w-20 md:w-24 h-1 bg-spotify-gradient mx-auto rounded-full mb-4 sm:mb-6"></div>
+        <p className="text-spotify-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
+          Go, Java, Kafka, AWS, PostgreSQL, and the stack I use in production at Aspora
+        </p>
+      </motion.div>
+
+      {/* Content */}
+      <motion.div 
+        variants={containerVariants}
+        className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16"
+      >
+        <motion.div 
+          variants={itemVariants}
+          className="w-full lg:w-1/2"
+          whileHover={{ y: -5 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Techandtools />
+        </motion.div>
+        
+        <motion.div 
+          variants={itemVariants}
+          className="w-full lg:w-1/2 flex justify-center"
+          initial={{ scale: 0.8, rotate: -5 }}
+          whileInView={{ 
+            scale: 1,
+            rotate: 0,
+            transition: { 
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              duration: 0.8
+            } 
+          }}
+          viewport={{ once: true, margin: "0px" }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <OrbitAnimation />
+        </motion.div>
+      </motion.div>
+
+      {/* Additional info */}
+      <motion.div 
+        variants={itemVariants}
+        className="mt-16 text-center"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="card-spotify text-center">
+            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">🚀</span>
+            </div>
+            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Fast Development</h3>
+            <p className="text-spotify-text-secondary">Quick prototyping and efficient development cycles</p>
           </div>
-        ))}
-      </div>
-    </motion.div>
-
-    {/* Content */}
-    <motion.div 
-      variants={containerVariants}
-      className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 lg:gap-24 w-full max-w-7xl"
-    >
-      <motion.div 
-        variants={itemVariants}
-        className="w-full md:w-1/2"
-        whileHover={{ y: -5 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <Techandtools />
+          
+          <div className="card-spotify text-center">
+            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">🔧</span>
+            </div>
+            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Problem Solving</h3>
+            <p className="text-spotify-text-secondary">Creative solutions to complex technical challenges</p>
+          </div>
+          
+          <div className="card-spotify text-center">
+            <div className="w-16 h-16 bg-spotify-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">📈</span>
+            </div>
+            <h3 className="text-xl font-semibold text-spotify-text-primary mb-2">Scalable Solutions</h3>
+            <p className="text-spotify-text-secondary">Building applications that grow with your needs</p>
+          </div>
+        </div>
       </motion.div>
-      
-      <motion.div 
-        variants={itemVariants}
-        className="w-full md:w-1/2 flex justify-center"
-        initial={{ scale: 0.8, rotate: -5 }}
-        whileInView={{ 
-          scale: 1,
-          rotate: 0,
-          transition: { 
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
-            duration: 0.8
-          } 
-        }}
-        viewport={{ once: true, margin: "0px" }}
-        whileHover={{ scale: 1.05 }}
-      >
-        <OrbitAnimation />
-      </motion.div>
-    </motion.div>
-
-    {/* Decorative elements */}
-    <motion.div 
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.8 }}
-    >
-      <div className="animate-bounce text-gray-500 text-sm">
-        Scroll down
-      </div>
-    </motion.div>
+    </div>
   </motion.section>
 );
 

@@ -1,6 +1,9 @@
 import { lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HelmetProvider } from "react-helmet-async";
 import Navbar from "./components/Navbar";
+import SEO from "./components/SEO";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./App.css";
 
 // Lazy load sections for better performance
@@ -25,15 +28,25 @@ const sectionVariants = {
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <HelmetProvider>
+      <div className="bg-spotify-dark min-h-screen">
+        <SEO 
+          title="Backend Software Engineer"
+          description="Aviral Asthana is a Backend Software Engineer at Aspora building Go and Java services for NRI banking, KYC/onboarding, Kafka event pipelines, and cloud-native fintech systems."
+          keywords="Aviral Asthana, Backend Software Engineer, Go Developer, Java Spring Boot, Kafka, AWS, Core Banking, KYC, Fintech, Docker, Kubernetes, PostgreSQL"
+        />
+        <GoogleAnalytics />
+        <Navbar />
 
       <div className="sections-container">
         <AnimatePresence mode="wait">
           <Suspense
             fallback={
-              <div className="flex justify-center items-center h-screen">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
+              <div className="flex justify-center items-center h-screen bg-spotify-dark">
+                <div className="relative">
+                  <div className="w-16 h-16 border-4 border-spotify-green/30 border-t-spotify-green rounded-full animate-spin"></div>
+                  <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-spotify-green rounded-full animate-pulse-slow"></div>
+                </div>
               </div>
             }
           >
@@ -105,7 +118,8 @@ function App() {
           </Suspense>
         </AnimatePresence>
       </div>
-    </>
+    </div>
+    </HelmetProvider>
   );
 }
 
