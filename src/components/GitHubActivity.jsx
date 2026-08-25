@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Github, Star, GitFork, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const USERNAME = "Aviral0702";
 
@@ -15,10 +16,7 @@ const GitHubActivity = () => {
       try {
         const [userRes, reposRes] = await Promise.all([
           fetch(`https://api.github.com/users/${USERNAME}`, { signal: controller.signal }),
-          fetch(
-            `https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=4`,
-            { signal: controller.signal }
-          ),
+          fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=4`, { signal: controller.signal }),
         ]);
 
         if (!userRes.ok || !reposRes.ok) throw new Error("GitHub API error");
@@ -36,29 +34,34 @@ const GitHubActivity = () => {
 
   return (
     <section
-      className="py-16 md:py-24 px-4 bg-gray-900 text-white"
+      className="section-padding bg-spotify-dark"
       aria-labelledby="github-heading"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 id="github-heading" className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400">
-              GitHub Activity
-            </span>
+      <div className="container-max">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10 sm:mb-12 px-2.5"
+        >
+          <h2 id="github-heading" className="section-heading mb-3 sm:mb-4">
+            <span className="gradient-text">GitHub Activity</span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <div className="section-divider mb-4 sm:mb-6" />
+          <p className="text-spotify-text-secondary max-w-xl mx-auto">
             Open-source work and recent repositories.
           </p>
-        </div>
+        </motion.div>
 
         {error && (
-          <p className="text-center text-gray-400">
+          <p className="text-center text-spotify-text-secondary">
             Could not load GitHub data.{" "}
             <a
               href={`https://github.com/${USERNAME}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-400 hover:underline"
+              className="text-spotify-green hover:text-spotify-green-hover underline"
             >
               View profile on GitHub
             </a>
@@ -67,39 +70,39 @@ const GitHubActivity = () => {
 
         {!error && !profile && (
           <div className="flex justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-purple-500 border-t-transparent" />
+            <div className="h-8 w-8 motion-safe:animate-spin rounded-full border-2 border-spotify-green border-t-transparent" />
           </div>
         )}
 
         {profile && (
           <>
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-6 rounded-xl border border-gray-800 bg-gray-800/50 p-6">
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-6 card-spotify">
               <a
                 href={profile.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-purple-300 transition-colors"
+                className="flex items-center gap-3 hover:text-spotify-green transition-colors"
               >
                 <img
                   src={profile.avatar_url}
                   alt={`${profile.name || USERNAME} GitHub avatar`}
-                  className="h-14 w-14 rounded-full border-2 border-purple-500"
+                  className="h-14 w-14 rounded-full border-2 border-spotify-green"
                 />
                 <div className="text-left">
-                  <p className="font-bold text-lg">{profile.name || USERNAME}</p>
-                  <p className="text-sm text-gray-400 flex items-center gap-1">
+                  <p className="font-bold text-lg text-spotify-text-primary">{profile.name || USERNAME}</p>
+                  <p className="text-sm text-spotify-text-secondary flex items-center gap-1">
                     <Github size={14} /> @{profile.login}
                   </p>
                 </div>
               </a>
               <div className="flex gap-6 text-center">
                 <div>
-                  <p className="text-2xl font-bold text-white">{profile.public_repos}</p>
-                  <p className="text-xs text-gray-400 uppercase">Repos</p>
+                  <p className="text-2xl font-bold text-spotify-text-primary">{profile.public_repos}</p>
+                  <p className="text-xs text-spotify-text-tertiary uppercase">Repos</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">{profile.followers}</p>
-                  <p className="text-xs text-gray-400 uppercase">Followers</p>
+                  <p className="text-2xl font-bold text-spotify-text-primary">{profile.followers}</p>
+                  <p className="text-xs text-spotify-text-tertiary uppercase">Followers</p>
                 </div>
               </div>
             </div>
@@ -111,21 +114,21 @@ const GitHubActivity = () => {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-xl border border-gray-800 bg-gray-800/40 p-5 transition-colors hover:border-purple-500/50 hover:bg-gray-800/70"
+                  className="group card-spotify album-card"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
+                    <h3 className="font-semibold text-spotify-text-primary group-hover:text-spotify-green transition-colors">
                       {repo.name}
                     </h3>
-                    <ExternalLink size={16} className="shrink-0 text-gray-500 group-hover:text-purple-400" />
+                    <ExternalLink size={16} className="shrink-0 text-spotify-text-tertiary group-hover:text-spotify-green" />
                   </div>
-                  <p className="text-sm text-gray-400 line-clamp-2 mb-4">
+                  <p className="text-sm text-spotify-text-secondary line-clamp-2 mb-4">
                     {repo.description || "No description"}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-gray-500">
+                  <div className="flex items-center gap-4 text-xs text-spotify-text-tertiary">
                     {repo.language && (
                       <span className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-purple-500" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-spotify-green" />
                         {repo.language}
                       </span>
                     )}

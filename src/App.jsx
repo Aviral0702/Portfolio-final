@@ -27,16 +27,17 @@ const sectionVariants = {
 
 function App() {
   return (
-    <>
+    <div className="bg-spotify-dark min-h-screen">
       <GoogleAnalytics />
+      <div className="spotify-player-bar" aria-hidden="true" />
       <Navbar />
 
       <div className="sections-container">
         <AnimatePresence mode="wait">
           <Suspense
             fallback={
-              <div className="flex justify-center items-center h-screen">
-                <div className="motion-safe:animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
+              <div className="flex justify-center items-center h-screen bg-spotify-dark">
+                <div className="motion-safe:animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-spotify-green" />
               </div>
             }
           >
@@ -122,7 +123,7 @@ function App() {
           </Suspense>
         </AnimatePresence>
       </div>
-    </>
+    </div>
   );
 }
 

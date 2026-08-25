@@ -1,12 +1,13 @@
 "use client"
 
+import { motion } from "framer-motion";
+
 const Experience = () => {
   const experiences = [
     {
       role: "Backend Software Engineer",
       company: "Aspora",
       duration: "April 2025 - Present",
-      tags: ["Go", "Java", "Spring Boot", "Kafka", "AWS", "React"],
       description: [
         "Independently built the end-to-end RFI flow from 0 to 1 — a backend-driven workflow orchestrator powering web and mobile screens, now live for 500+ users. Mentored another engineer along the way.",
         "Owned Go backend services for Aspora’s NRI Banking product end to end, integrating with the Core Banking System for onboarding, KYC, and transactions — 1,000+ real bank accounts opened.",
@@ -16,76 +17,86 @@ const Experience = () => {
         "Cut a critical API from 10+ seconds to <250ms (40x) with CompletableFuture, better indexes, and Redis caching.",
         "Shipped React dashboards on Alphadesk for real-time order and transaction monitoring.",
       ],
+      tags: ["Go", "Java", "Spring Boot", "Kafka", "AWS", "React"],
     },
     {
       role: "Web Developer Intern",
       company: "Codestam Technologies",
       duration: "March 2024 - April 2024",
-      tags: ["Node.js", "Express.js", "PostgreSQL", "MongoDB"],
       description: [
         "Built backend services and REST APIs with Node.js and Express.js; the team delivered projects 20% faster through clearer backend architecture.",
         "Shipped real-time chat backends with WebSockets, e-commerce APIs with payment processing, and admin services on PostgreSQL and MongoDB for 1,000+ active users.",
       ],
+      tags: ["Node.js", "Express.js", "PostgreSQL", "MongoDB"],
     },
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white py-12 sm:py-16 px-4 flex flex-col">
-      {/* Header Section */}
-      <div className="text-center mb-8 sm:mb-16">
-        <h2 id="experience-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative inline-block">
-          <span className="relative z-10">Experience</span>
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500"></span>
-        </h2>
-      </div>
+    <div className="section-padding bg-spotify-dark-secondary">
+      <div className="container-max">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 sm:mb-16 px-2.5"
+        >
+          <h2 id="experience-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">
+            <span className="gradient-text">Experience</span>
+          </h2>
+          <div className="w-16 sm:w-20 md:w-24 h-1 bg-spotify-gradient mx-auto rounded-full" />
+        </motion.div>
 
-      {/* Timeline Container */}
-      <div className="max-w-4xl mx-auto relative flex-grow pb-16">
-        {/* Vertical Line */}
-        <div className="absolute left-1/2 sm:left-6 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 hidden sm:block transform sm:translate-x-0 -translate-x-1/2" />
+        <div className="relative pb-16">
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-spotify-gradient hidden md:block transform -translate-x-1/2" />
 
-        {/* Experience Items */}
-        <div className="space-y-8 sm:space-y-12">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative flex flex-col sm:flex-row">
-              {/* Timeline Dot */}
-              <div className="absolute left-1/2 sm:left-6 top-0 w-3 h-3 rounded-full bg-purple-500 border-4 border-black hidden sm:block transform sm:translate-x-0 -translate-x-1/2" />
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="relative flex flex-col md:flex-row"
+              >
+                <div className="absolute left-1/2 top-0 w-4 h-4 rounded-full bg-spotify-green border-4 border-spotify-dark-secondary hidden md:block transform -translate-x-1/2 z-10" />
 
-              {/* Content Card */}
-              <div className="w-full sm:ml-16 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                {/* Header Section */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-                  <div className="space-y-1">
-                    <h2 className="text-lg sm:text-xl font-bold text-white">{exp.company}</h2>
-                    <h3 className="text-purple-400 font-medium text-xs sm:text-sm">({exp.duration})</h3>
-                  </div>
-                  <div className="mt-2 sm:mt-0">
-                    <span className="text-sm sm:text-base text-gray-300 font-medium">{exp.role}</span>
+                <div className={`w-full ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} md:w-1/2`}>
+                  <div className="card-spotify hover:shadow-spotify-green/20 transition-all duration-300 group">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                      <div className="space-y-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-spotify-text-primary group-hover:text-spotify-green transition-colors duration-200">
+                          {exp.company}
+                        </h3>
+                        <p className="text-spotify-green font-medium text-sm sm:text-base">{exp.duration}</p>
+                      </div>
+                      <div className="mt-2 sm:mt-0">
+                        <span className="text-sm sm:text-base text-spotify-text-secondary font-medium bg-spotify-dark-tertiary px-3 py-1 rounded-full">
+                          {exp.role}
+                        </span>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-3">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="text-spotify-text-secondary text-sm sm:text-base flex items-start group">
+                          <span className="mr-3 text-spotify-green group-hover:text-spotify-green-hover transition-colors mt-1">•</span>
+                          <span className="group-hover:text-spotify-text-primary transition-colors">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {exp.tags.map((tag) => (
+                        <span key={tag} className="text-xs px-3 py-1 bg-spotify-dark-tertiary rounded-full border border-spotify-border">{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-
-                {/* Description List */}
-                <ul className="space-y-2 sm:space-y-3">
-                  {exp.description.map((item, i) => (
-                    <li key={i} className="text-gray-300 text-xs sm:text-sm flex items-start group">
-                      <span className="mr-2 text-purple-400 group-hover:text-pink-400 transition-colors">•</span>
-                      <span className="group-hover:text-white transition-colors">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {exp.tags?.length > 0 && (
-                  <div className="mt-4 sm:mt-6 flex flex-wrap gap-3">
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="text-xs px-2 py-1 bg-gray-700 rounded-md">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

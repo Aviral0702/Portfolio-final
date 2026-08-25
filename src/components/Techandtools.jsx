@@ -1,20 +1,20 @@
 import React from "react";
-import reactsrc from "../assets/icons/react.png";
-import tailwindsrc from "../assets/icons/tailwind.png";
-import jssrc from "../assets/icons/javascript.png";
-import nodesrc from "../assets/icons/node.png";
-import mongodbsrc from "../assets/icons/mongodb.png";
-import expresssrc from "../assets/icons/Express.png";
-import tssrc from "../assets/icons/TypeScript.png";
 import gosrc from "../assets/icons/golang.png";
+import nodesrc from "../assets/icons/node.png";
+import reactsrc from "../assets/icons/react.png";
+import nextsrc from "../assets/icons/Next.js.png";
+import expresssrc from "../assets/icons/Express.png";
+import redissrc from "../assets/icons/Redis.png";
+import dockersrc from "../assets/icons/Docker.png";
+import ksrc from "../assets/icons/kubernetes.png";
+import linuxsrc from "../assets/icons/Linux.png";
+import tssrc from "../assets/icons/TypeScript.png";
+import jssrc from "../assets/icons/javascript.png";
 import gitsrc from "../assets/icons/Git.png";
 import githubsrc from "../assets/icons/GitHub.png";
-import dockersrc from "../assets/icons/Docker.png";
-import linuxsrc from "../assets/icons/Linux.png";
-import nextsrc from "../assets/icons/Next.js.png";
+import mongodbsrc from "../assets/icons/mongodb.png";
+import tailwindsrc from "../assets/icons/tailwind.png";
 import postmansrc from "../assets/icons/Postman.png";
-import redissrc from "../assets/icons/Redis.png";
-import ksrc from "../assets/icons/kubernetes.png";
 import cppsrc from "../assets/icons/cpp.png";
 
 const tools = [
@@ -43,30 +43,32 @@ function Techandtools() {
       className="w-full max-w-6xl mx-auto px-4 sm:px-6"
       aria-labelledby="tech-tools-heading"
     >
-      <h2
+      <h3
         id="tech-tools-heading"
-        className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8"
+        className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-spotify-text-primary"
       >
-        Technologies
-      </h2>
-      <h3 className="text-lg sm:text-xl font-bold text-center mb-6 max-w-3xl mx-auto">
-        Production stack I use at work: Go and Java backends, React when the product needs a UI, and AWS, Kafka, Docker, and Kubernetes to run it.
+        Technologies & Tools
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-y-4 md:gap-x-20">
+      <p className="text-lg sm:text-xl font-medium text-center mb-8 max-w-3xl mx-auto text-spotify-text-secondary">
+        Production stack I use at work: Go and Java backends, React when the product needs a UI, and AWS, Kafka, Docker, and Kubernetes to run it.
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="p-2 sm:p-3 bg-gray-100 text-black rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-2 w-full md:min-w-[160px]"
+            className="group card-spotify album-card flex flex-col items-center gap-3 p-4 sm:p-6"
             title={tool.name}
             role="listitem"
           >
-            <img
-              loading="lazy"
-              src={tool.icon}
-              alt={`${tool.name} logo`}
-              className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
-            />
-            <div className="text-sm sm:text-base md:text-lg font-medium break-words">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-spotify-dark-secondary rounded-lg p-2 flex items-center justify-center group-hover:bg-spotify-green/10 transition-colors duration-200">
+              <img
+                loading="lazy"
+                src={tool.icon}
+                alt={`${tool.name} logo`}
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
+              />
+            </div>
+            <div className="text-sm sm:text-base font-medium text-center group-hover:text-spotify-green transition-colors duration-200">
               {tool.name}
             </div>
           </div>

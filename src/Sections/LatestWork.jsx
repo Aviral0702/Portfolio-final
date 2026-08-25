@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 
-// Sample project data - moved outside component to prevent recreation on each render
 const projectsData = [
   {
     id: "querywise",
@@ -52,27 +51,29 @@ const itemVariants = {
 // Separate component for project card to improve readability
 const ProjectCard = ({ project }) => (
   <motion.div variants={itemVariants} className="w-full md:w-1/2 lg:w-1/2 px-4 mb-8">
-    <div className="group h-full bg-slate-800/50 border border-slate-700 backdrop-blur-sm overflow-hidden hover:border-purple-500/50 transition-all duration-300 rounded-xl flex flex-col">
-      <div className="relative overflow-hidden h-48">
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10 opacity-60"></div>
+    <div className="group h-full card-spotify album-card overflow-hidden flex flex-col p-0">
+      <div className="relative overflow-hidden h-48 bg-spotify-dark-tertiary">
+        <div className="absolute inset-0 bg-gradient-to-br from-spotify-green/20 via-spotify-dark-secondary to-spotify-dark z-10" />
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-purple-900/40 to-slate-800 flex items-center justify-center">
-            <span className="text-slate-300 font-medium">{project.title}</span>
+          <div className="absolute inset-0 flex items-center justify-center z-20">
+            <span className="text-5xl font-black text-spotify-green/40 group-hover:text-spotify-green/60 transition-colors">
+              {project.title.charAt(0)}
+            </span>
           </div>
         )}
       </div>
       <div className="p-6 pt-5 flex-grow">
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+        <h3 className="text-xl font-bold text-spotify-text-primary mb-3 group-hover:text-spotify-green transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-400 mb-4 text-sm line-clamp-3">
+        <p className="text-spotify-text-secondary mb-4 text-sm line-clamp-3">
           {project.description}
         </p>
 
@@ -81,7 +82,7 @@ const ProjectCard = ({ project }) => (
           {project.tags.map((tech, index) => (
             <span
               key={`${project.id}-tag-${index}`}
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-700/50 text-purple-300 border border-purple-500/20 hover:bg-slate-700 transition-colors"
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium chip-spotify"
             >
               {tech}
             </span>
@@ -94,7 +95,7 @@ const ProjectCard = ({ project }) => (
             href={project.demoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="inline-flex items-center justify-center rounded-full text-sm font-bold h-9 px-4 py-2 btn-spotify !py-2"
             aria-label={`View live demo of ${project.title}`}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
@@ -105,7 +106,7 @@ const ProjectCard = ({ project }) => (
           href={project.codeLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-transparent border border-slate-700 text-slate-300 hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+          className="inline-flex items-center justify-center rounded-full text-sm font-semibold h-9 px-4 py-2 btn-spotify-ghost"
           aria-label={`View source code of ${project.title}`}
         >
           <Github className="mr-2 h-4 w-4" />
@@ -123,29 +124,26 @@ export default function LatestWork() {
   return (
     <section
       id="latest-work"
-      className="py-12 md:py-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900"
+      className="section-padding bg-spotify-dark"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="container-max">
         {/* Section Header */}
-        <div className="text-center mb-8 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Latest{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                Work
-              </span>
-            </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-            <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
-              QueryWise is the project on my current resume. Also included is a backend systems project that matches how I work today.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 sm:mb-16 px-2.5"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-spotify-text-primary mb-3 sm:mb-4">
+            Latest{" "}
+            <span className="gradient-text">Work</span>
+          </h2>
+          <div className="w-16 sm:w-20 md:w-24 h-1 sm:h-1.5 bg-spotify-gradient mx-auto rounded-full mb-4 sm:mb-6"></div>
+          <p className="text-spotify-text-secondary mt-4 sm:mt-6 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
+            QueryWise is the project on my current resume, plus a backend systems project that matches how I work today.
+          </p>
+        </motion.div>
 
         {/* Projects Grid */}
         <motion.div
@@ -166,11 +164,11 @@ export default function LatestWork() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-8 md:mt-16"
+          className="text-center mt-16"
         >
           <a
             href="#projects"
-            className="inline-flex items-center justify-center rounded-md text-base md:text-lg font-medium h-12 md:h-14 px-6 md:px-8 py-4 md:py-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-colors shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="btn-spotify inline-flex items-center justify-center text-base md:text-lg font-medium h-12 md:h-14 px-6 md:px-8 py-4 md:py-6"
           >
             View All Projects
             <ArrowRight className="ml-2 h-4 md:h-5 w-4 md:w-5" />

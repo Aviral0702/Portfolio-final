@@ -1,34 +1,35 @@
 import { useEffect } from "react";
-import { GA_MEASUREMENT_ID, pageview } from "../config/analytics";
+import { initGA, trackPageView, trackScrollDepth } from "../config/analytics";
 
 const GoogleAnalytics = () => {
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) return;
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", GA_MEASUREMENT_ID);
-
-    pageview(window.location.pathname + window.location.hash);
+    initGA();
+    trackPageView();
 
     const onNavigate = () => {
-      pageview(window.location.pathname + window.location.hash);
+      trackPageView(document.title, window.location.pathname + window.location.hash);
     };
 
     window.addEventListener("hashchange", onNavigate);
     window.addEventListener("popstate", onNavigate);
 
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.body.offsetHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      if (scrollPercent >= 25 && scrollPercent < 50) trackScrollDepth("25%");
+      else if (scrollPercent >= 50 && scrollPercent < 75) trackScrollDepth("50%");
+      else if (scrollPercent >= 75 && scrollPercent < 100) trackScrollDepth("75%");
+      else if (scrollPercent >= 100) trackScrollDepth("100%");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("hashchange", onNavigate);
       window.removeEventListener("popstate", onNavigate);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

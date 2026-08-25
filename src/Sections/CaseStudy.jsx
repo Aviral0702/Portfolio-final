@@ -25,21 +25,28 @@ const steps = [
 
 const CaseStudy = () => (
   <section
-    className="min-h-screen bg-gradient-to-b from-black via-gray-950 to-gray-900 text-white py-16 md:py-24 px-4"
+    className="section-padding bg-spotify-dark"
     aria-labelledby="case-study-heading"
   >
-    <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-12 md:mb-16">
-        <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
+    <div className="container-max">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 sm:mb-16 px-2.5"
+      >
+        <p className="text-sm font-semibold uppercase tracking-widest text-spotify-green mb-3">
           Featured case study
         </p>
-        <h2 id="case-study-heading" className="text-3xl md:text-5xl font-bold mb-4">
-          RFI Workflow Orchestrator
+        <h2 id="case-study-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <span className="gradient-text">RFI Workflow Orchestrator</span>
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <div className="section-divider mb-4 sm:mb-6" />
+        <p className="text-spotify-text-secondary max-w-2xl mx-auto">
           How I shipped a backend-driven workflow from zero to production at Aspora.
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {steps.map((step, index) => (
@@ -49,25 +56,20 @@ const CaseStudy = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6 md:p-8"
+            className="card-spotify album-card"
           >
-            <span className="inline-block rounded-full bg-purple-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wide text-purple-300 mb-4">
+            <span className="inline-block rounded-full bg-spotify-green/20 px-3 py-1 text-xs font-bold uppercase tracking-wide text-spotify-green mb-4">
               {step.label}
             </span>
-            <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-            <p className="text-gray-300 leading-relaxed">{step.body}</p>
+            <h3 className="text-xl font-bold text-spotify-text-primary mb-3">{step.title}</h3>
+            <p className="text-spotify-text-secondary leading-relaxed">{step.body}</p>
           </motion.article>
         ))}
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-3">
         {["Go", "Java", "Kafka", "AWS", "PostgreSQL", "React"].map((tag) => (
-          <span
-            key={tag}
-            className="rounded-lg border border-gray-700 bg-gray-800/80 px-3 py-1.5 text-sm text-gray-300"
-          >
-            {tag}
-          </span>
+          <span key={tag} className="chip-spotify">{tag}</span>
         ))}
       </div>
     </div>
