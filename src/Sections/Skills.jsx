@@ -1,5 +1,5 @@
 import React from 'react';
-import OrbitAnimation from '../components/OrbitAnimation';
+import ProductionStack from '../components/ProductionStack';
 import Techandtools from '../components/Techandtools';
 import { motion } from 'framer-motion';
 
@@ -31,29 +31,27 @@ const itemVariants = {
 
 const Skills = () => (
   <motion.section
-    id="skills"
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-50px" }}
     variants={containerVariants}
     className="relative min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white flex flex-col items-center justify-center py-12 md:py-24 px-4 md:px-8 overflow-hidden"
+    aria-labelledby="skills-heading"
   >
-    {/* Background elements */}
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-purple-900/20 blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-blue-900/20 blur-3xl"></div>
     </div>
 
-    {/* Header */}
     <motion.div 
       variants={itemVariants}
       className="relative z-10 text-center mb-12 md:mb-20"
     >
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+      <h2 id="skills-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
           Skills & Expertise
         </span>
-      </h1>
+      </h2>
       <motion.div 
         className="h-1 w-24 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
         initial={{ scaleX: 0 }}
@@ -81,7 +79,6 @@ const Skills = () => (
       </div>
     </motion.div>
 
-    {/* Content */}
     <motion.div 
       variants={containerVariants}
       className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 lg:gap-24 w-full max-w-7xl"
@@ -112,21 +109,8 @@ const Skills = () => (
         viewport={{ once: true, margin: "0px" }}
         whileHover={{ scale: 1.05 }}
       >
-        <OrbitAnimation />
+        <ProductionStack />
       </motion.div>
-    </motion.div>
-
-    {/* Decorative elements */}
-    <motion.div 
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.8 }}
-    >
-      <div className="animate-bounce text-gray-500 text-sm">
-        Scroll down
-      </div>
     </motion.div>
   </motion.section>
 );

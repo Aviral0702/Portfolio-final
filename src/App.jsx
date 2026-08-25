@@ -1,14 +1,16 @@
 import { lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./App.css";
 
-// Lazy load sections for better performance
 const Home = lazy(() => import("./Sections/Home"));
 const About = lazy(() => import("./Sections/About"));
 const Skills = lazy(() => import("./Sections/Skills"));
 const Experience = lazy(() => import("./Sections/Experience"));
+const CaseStudy = lazy(() => import("./Sections/CaseStudy"));
 const Projects = lazy(() => import("./Sections/Projects"));
+const GitHubActivity = lazy(() => import("./components/GitHubActivity"));
 const Contact = lazy(() => import("./Sections/Contact"));
 
 const sectionVariants = {
@@ -26,6 +28,7 @@ const sectionVariants = {
 function App() {
   return (
     <>
+      <GoogleAnalytics />
       <Navbar />
 
       <div className="sections-container">
@@ -33,11 +36,10 @@ function App() {
           <Suspense
             fallback={
               <div className="flex justify-center items-center h-screen">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
+                <div className="motion-safe:animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
               </div>
             }
           >
-            {/* Home Section */}
             <motion.section
               id="home"
               initial="hidden"
@@ -48,7 +50,6 @@ function App() {
               <Home />
             </motion.section>
 
-            {/* About Section */}
             <motion.section
               id="about"
               initial="hidden"
@@ -59,7 +60,6 @@ function App() {
               <About />
             </motion.section>
 
-            {/* Skills Section */}
             <motion.section
               id="skills"
               initial="hidden"
@@ -70,7 +70,6 @@ function App() {
               <Skills />
             </motion.section>
 
-            {/* Experience Section */}
             <motion.section
               id="experience"
               initial="hidden"
@@ -81,7 +80,16 @@ function App() {
               <Experience />
             </motion.section>
 
-            {/* Projects Section */}
+            <motion.section
+              id="case-study"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={sectionVariants}
+            >
+              <CaseStudy />
+            </motion.section>
+
             <motion.section
               id="projects"
               initial="hidden"
@@ -92,7 +100,16 @@ function App() {
               <Projects />
             </motion.section>
 
-            {/* Contact Section */}
+            <motion.section
+              id="github"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={sectionVariants}
+            >
+              <GitHubActivity />
+            </motion.section>
+
             <motion.section
               id="contact"
               initial="hidden"

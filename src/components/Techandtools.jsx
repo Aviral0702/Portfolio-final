@@ -41,7 +41,6 @@ function Techandtools() {
   return (
     <section
       className="w-full max-w-6xl mx-auto px-4 sm:px-6"
-      id="skills"
       aria-labelledby="tech-tools-heading"
     >
       <h2

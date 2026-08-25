@@ -1,0 +1,16 @@
+{
+  "name": "Aviral Asthana — Backend Software Engineer",
+  "short_name": "Aviral Asthana",
+  "description": "Backend Software Engineer portfolio — Go, Java, Kafka, AWS, PostgreSQL.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/portfolio logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

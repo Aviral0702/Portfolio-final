@@ -82,15 +82,14 @@ const Contact = () => {
 
   return (
     <section
-      id="contact"
       className="min-h-screen bg-gray-900 text-white flex flex-col justify-center items-center py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="w-full max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 relative inline-block">
+          <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold mb-4 relative inline-block">
             Contact Me
             <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 mt-2"></span>
-          </h1>
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Have a question or want to work together? Feel free to reach out!
           </p>

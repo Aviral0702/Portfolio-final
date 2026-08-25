@@ -9,84 +9,23 @@ const projectsData = [
     id: "querywise",
     title: "QueryWise",
     description:
-      "A single-binary Go CLI that reads PostgreSQL pg_stat_statements and ranks the most expensive query patterns by a weighted cost heuristic across execution time, I/O, and call frequency. Query text is fingerprinted locally via SHA-256/HMAC and discarded so raw SQL is never stored. Optional Claude recommendations send only fingerprints and metrics. Exports terminal, Markdown, and JSON reports.",
+      "A single-binary Go CLI that reads PostgreSQL pg_stat_statements and ranks the most expensive query patterns by a weighted cost heuristic across execution time, I/O, and call frequency. Query text is fingerprinted locally via SHA-256/HMAC and discarded so raw SQL is never stored. Optional Claude recommendations send only fingerprints and metrics.",
     tags: ["Go", "PostgreSQL", "Claude API", "CLI"],
     hueA: 200,
     hueB: 240,
     link: "",
     github: "https://github.com/Aviral0702/QueryWiseProd",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "chattos",
-    title: "Chattos",
-    description:
-      "Chattos is a real-time scalable chat application that allows users to create chat rooms and chat with other users in real-time.",
-    tags: ["Next.js", "TailwindCSS", "Convex", "Vercel"],
-    hueA: 180,
-    hueB: 200,
-    link: "https://chattos-hazel.vercel.app",
-    github: "https://github.com/Aviral0702/chat-application",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "performance-api",
-    title: "Performance API",
-    description:
-      "An API made with HONO, Upstash-Redis and Cloudflare. This is a search API for Countries where fast response time is guaranteed. This is possible due to caching with the help of Redis and improved data fetching latency using Cloudflare Workers.",
-    tags: ["Next.js", "Typescript", "HONO", "Upstash", "Redis", "Cloudflare Workers", "Wrangler"],
-    hueA: 220,
-    hueB: 240,
-    link: "",
-    github: "https://github.com/Aviral0702/PerformanceAPI",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "js-formatter",
-    title: "Unique JS Formatter",
-    description: "An NPM package that formats JavaScript and TypeScript code",
-    tags: ["JavaScript", "TypeScript", "Node.js"],
-    hueA: 220,
-    hueB: 240,
-    link: "https://www.npmjs.com/package/unique-js-formatter",
-    github: "https://github.com/Aviral0702/JS-CodeFormat-Package-npm",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "podexo",
-    title: "Podexo",
-    description:
-      "Podexo is a web application that transforms your podcast episodes into well-crafted blog posts, making your content more accessible and engaging.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-    hueA: 200,
-    hueB: 220,
-    link: "https://podexo.vercel.app/",
-    github: "https://github.com/Aviral0702/Podexo",
-    image: "/placeholder.svg?height=300&width=500",
   },
   {
     id: "rate-limiter",
     title: "API Rate Limiter",
     description:
-      "An API rate limiter that limits the number of requests a user can make to an API within a given time frame.",
-    tags: ["Node.js", "Express", "Redis", "Docker", "MongoDB"],
+      "An API rate limiter that limits the number of requests a user can make to an API within a given time frame, built with Node.js, Express, Redis, Docker, and MongoDB.",
+    tags: ["Node.js", "Express", "Redis", "Docker"],
     hueA: 160,
     hueB: 180,
-    link: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
+    link: "",
     github: "https://github.com/Aviral0702/API-Rate-Limiter-Redis",
-    image: "/placeholder.svg?height=300&width=500",
-  },
-  {
-    id: "bytebazaar",
-    title: "ByteBazaar",
-    description:
-      "ByteBazaar is a SaaS marketplace for buying and selling digital products like eBooks, courses, and software.",
-    tags: ["React", "Node.js", "MongoDB", "Three.js", "TailwindCSS", "Express"],
-    hueA: 140,
-    hueB: 160,
-    link: "https://byte-bazaar-beta.vercel.app/",
-    github: "https://github.com/Aviral0702/ByteBazaar",
-    image: "/placeholder.svg?height=300&width=500",
   },
   {
     id: "go-rest-api",
@@ -97,26 +36,25 @@ const projectsData = [
     hueB: 160,
     link: "",
     github: "https://github.com/Aviral0702/Go-Lang-REST-API-Helm-Chart",
-    image: "/placeholder.svg?height=300&width=500",
   },
   {
-    id: "cses-extension",
-    title: "CSES-GitHub Chrome Extension",
+    id: "performance-api",
+    title: "Performance API",
     description:
-      "A Chrome extension that shows the number of problems solved by a user on CSES problem set on their GitHub profile.",
-    tags: ["JavaScript", "Chrome Extension"],
-    hueA: 200,
-    hueB: 150,
+      "A search API for countries with guaranteed fast response times via Redis caching and Cloudflare Workers, built with Hono and Upstash.",
+    tags: ["Hono", "Redis", "Cloudflare Workers", "TypeScript"],
+    hueA: 220,
+    hueB: 240,
     link: "",
-    github: "https://github.com/Aviral0702/CSES-Chrome-Extension",
-    image: "/placeholder.svg?height=300&width=500",
+    github: "https://github.com/Aviral0702/PerformanceAPI",
   },
 ]
 
 const hue = (h) => `hsl(${h}, 80%, 20%)`
 
-const ProjectCard = ({ title, description, tags, hueA, hueB, link, github, image, isActive, index }) => {
+const ProjectCard = ({ title, description, tags, hueA, hueB, link, github, isActive, index }) => {
   const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`
+  const initial = title.charAt(0).toUpperCase()
 
   return (
     <motion.div
@@ -141,16 +79,14 @@ const ProjectCard = ({ title, description, tags, hueA, hueB, link, github, image
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
 
-      <div className="w-full h-full flex flex-col justify-between p-6 relative z-10">
-        {image && (
-          <div className="absolute inset-0 z-0 opacity-20">
-            <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
-          </div>
-        )}
+      <div className="absolute top-6 right-6 z-0 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/10 text-5xl font-bold text-white/30 backdrop-blur-sm">
+        {initial}
+      </div>
 
+      <div className="w-full h-full flex flex-col justify-between p-6 relative z-10">
         <div className="flex flex-col h-full">
           <div className="mb-4">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">{title}</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">{title}</h3>
             <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full" />
           </div>
 
@@ -264,8 +200,8 @@ const Projects = () => {
 
   return (
     <section
-      id="projects"
       className="py-16 md:py-24 bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white flex flex-col items-center justify-center min-h-screen overflow-hidden"
+      aria-labelledby="projects-heading"
     >
       <div className="max-w-7xl w-full px-4 mx-auto">
         <motion.div
@@ -274,11 +210,11 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 id="projects-heading" className="text-3xl md:text-5xl font-bold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Projects</span>
-          </h1>
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Featured work from the resume, plus selected backend and product projects.
+            Curated backend and systems projects — focused on production engineering.
           </p>
         </motion.div>
 
@@ -319,7 +255,7 @@ const Projects = () => {
           >
             <span className="text-sm text-gray-400 flex items-center gap-2">
               <span>Swipe to explore</span>
-              <ArrowRightCircle size={16} className="animate-pulse" />
+              <ArrowRightCircle size={16} className="motion-safe:animate-pulse" />
             </span>
           </motion.div>
 
@@ -358,7 +294,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }

@@ -18,13 +18,12 @@ const About = () => {
 
   return (
     <section
-      id="about"
       aria-labelledby="about-heading"
       className="bg-gray-900 text-white flex flex-col items-center justify-center py-16 px-4"
     >
-      <h1 id="about-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
+      <h2 id="about-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
         About <span className="text-blue-400">Me</span>
-      </h1>
+      </h2>
 
       <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-6xl gap-12">
         {/* Text Content */}

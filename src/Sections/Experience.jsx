@@ -30,13 +30,13 @@ const Experience = () => {
   ]
 
   return (
-    <div id="experience" className="min-h-screen bg-black text-white py-12 sm:py-16 px-4 flex flex-col">
+    <div className="min-h-screen bg-black text-white py-12 sm:py-16 px-4 flex flex-col">
       {/* Header Section */}
       <div className="text-center mb-8 sm:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative inline-block">
-          <p className="relative z-10">Experience</p>
+        <h2 id="experience-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative inline-block">
+          <span className="relative z-10">Experience</span>
           <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500"></span>
-        </h1>
+        </h2>
       </div>
 
       {/* Timeline Container */}
