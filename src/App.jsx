@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import NowPlayingBar from "./components/NowPlayingBar";
 import "./App.css";
 
 const Home = lazy(() => import("./Sections/Home"));
@@ -13,30 +14,33 @@ const Projects = lazy(() => import("./Sections/Projects"));
 const Contact = lazy(() => import("./Sections/Contact"));
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
 function App() {
   return (
-    <div className="bg-spotify-dark min-h-screen">
+    <div className="bg-spotify-dark min-h-screen pb-16">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <GoogleAnalytics />
-      <div className="spotify-player-bar" aria-hidden="true" />
       <Navbar />
+      <NowPlayingBar />
 
-      <div className="sections-container">
+      <main id="main" className="sections-container">
         <AnimatePresence mode="wait">
           <Suspense
             fallback={
               <div className="flex justify-center items-center h-screen bg-spotify-dark">
-                <div className="motion-safe:animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-spotify-green" />
+                <div className="equalizer scale-150" aria-hidden="true">
+                  <span /><span /><span /><span />
+                </div>
+                <span className="sr-only">Loading</span>
               </div>
             }
           >
@@ -44,7 +48,7 @@ function App() {
               id="home"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <Home />
@@ -54,7 +58,7 @@ function App() {
               id="about"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <About />
@@ -64,7 +68,7 @@ function App() {
               id="skills"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <Skills />
@@ -74,7 +78,7 @@ function App() {
               id="experience"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <Experience />
@@ -84,7 +88,7 @@ function App() {
               id="case-study"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <CaseStudy />
@@ -94,7 +98,7 @@ function App() {
               id="projects"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <Projects />
@@ -104,14 +108,14 @@ function App() {
               id="contact"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={sectionVariants}
             >
               <Contact />
             </motion.section>
           </Suspense>
         </AnimatePresence>
-      </div>
+      </main>
     </div>
   );
 }

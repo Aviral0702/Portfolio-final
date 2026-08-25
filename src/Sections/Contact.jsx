@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "@emailjs/browser";
-import contactUs from "../assets/Images/undraw_personal-text_090t.svg";
 import { motion } from "framer-motion";
+import { Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +83,7 @@ const Contact = () => {
 
   return (
     <section
-      className="section-padding bg-spotify-dark-secondary"
+      className="section-padding bg-spotify-dark section-rail"
       aria-labelledby="contact-heading"
     >
       <div className="container-max">
@@ -103,13 +103,13 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-12">
+        <div className="flex flex-col lg:flex-row justify-center items-start gap-10">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full max-w-md lg:max-w-lg"
+            className="w-full max-w-md lg:max-w-lg mx-auto lg:mx-0"
           >
             <form
               ref={form}
@@ -227,22 +227,35 @@ const Contact = () => {
             </form>
           </motion.div>
 
-          <motion.div 
+          <motion.aside
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full max-w-sm lg:max-w-md flex justify-center"
+            className="w-full max-w-sm mx-auto lg:mx-0 space-y-4"
           >
-            <div className="relative group">
-              <img
-                src={contactUs}
-                alt="Contact illustration"
-                className="w-full h-auto max-w-[400px] group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-spotify-green/10 rounded-full blur-3xl group-hover:bg-spotify-green/20 transition-all duration-300"></div>
-            </div>
-          </motion.div>
+            <p className="text-spotify-text-secondary text-sm">
+              LinkedIn and GitHub if you prefer not to use the form.
+            </p>
+            <a
+              href="https://www.linkedin.com/in/aviral-asthana-02b70824b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-spotify album-card flex items-center gap-3 !p-4"
+            >
+              <Linkedin className="text-spotify-green shrink-0" size={20} />
+              <span className="text-sm text-spotify-text-primary">LinkedIn</span>
+            </a>
+            <a
+              href="https://www.github.com/Aviral0702"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-spotify album-card flex items-center gap-3 !p-4"
+            >
+              <Github className="text-spotify-green shrink-0" size={20} />
+              <span className="text-sm text-spotify-text-primary">GitHub</span>
+            </a>
+          </motion.aside>
         </div>
 
         <motion.footer 

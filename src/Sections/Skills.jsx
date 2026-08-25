@@ -1,115 +1,81 @@
-import React from 'react';
-import ProductionStack from '../components/ProductionStack';
-import Techandtools from '../components/Techandtools';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import gosrc from "../assets/icons/golang.png";
+import nodesrc from "../assets/icons/node.png";
+import reactsrc from "../assets/icons/react.png";
+import redissrc from "../assets/icons/Redis.png";
+import dockersrc from "../assets/icons/Docker.png";
+import ksrc from "../assets/icons/kubernetes.png";
+import linuxsrc from "../assets/icons/Linux.png";
+import gitsrc from "../assets/icons/Git.png";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-      when: "beforeChildren",
-      delayChildren: 0.2
-    }
-  }
-};
+const tools = [
+  { name: "Go", icon: gosrc },
+  { name: "Java", icon: null },
+  { name: "Kafka", icon: null },
+  { name: "AWS", icon: null },
+  { name: "PostgreSQL", icon: null },
+  { name: "Redis", icon: redissrc },
+  { name: "Docker", icon: dockersrc },
+  { name: "Kubernetes", icon: ksrc },
+  { name: "Node.js", icon: nodesrc },
+  { name: "React", icon: reactsrc },
+  { name: "Linux", icon: linuxsrc },
+  { name: "Git", icon: gitsrc },
+];
 
-const itemVariants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-      duration: 0.7
-    }
-  }
-};
+const categories = [
+  ["Languages", "Go, Java, Python, SQL"],
+  ["Data & events", "Kafka, SQS, PostgreSQL, Redis"],
+  ["Cloud", "AWS ECS, Docker, Kubernetes"],
+  ["Fintech", "CBS, KYC, RBAC, orchestration"],
+];
 
 const Skills = () => (
-  <motion.section
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={containerVariants}
-    className="section-padding bg-spotify-dark relative overflow-hidden"
+  <section
+    className="section-padding bg-spotify-dark relative overflow-hidden section-rail"
     aria-labelledby="skills-heading"
   >
-    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-spotify-green/5 blur-3xl motion-safe:animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-spotify-green/3 blur-3xl motion-safe:animate-pulse-slow" style={{ animationDelay: '1s' }} />
-    </div>
-
     <div className="container-max relative z-10">
       <motion.div
-        variants={itemVariants}
-        className="text-center mb-12 sm:mb-16 px-2.5"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-10 sm:mb-12 px-2.5"
       >
-        <h2 id="skills-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
-          <span className="gradient-text">Skills</span> & Expertise
+        <h2 id="skills-heading" className="section-heading mb-3 sm:mb-4">
+          <span className="gradient-text">Skills</span>
         </h2>
-        <div className="w-16 sm:w-20 md:w-24 h-1 bg-spotify-gradient mx-auto rounded-full mb-4 sm:mb-6" />
-        <p className="text-spotify-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
-          Go, Java, Kafka, AWS, PostgreSQL, and the stack I use in production at Aspora
+        <div className="section-divider mb-4" />
+        <p className="text-spotify-text-secondary max-w-2xl mx-auto text-sm sm:text-base">
+          Production stack at Aspora — not a laundry list.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16"
-      >
-        <motion.div
-          variants={itemVariants}
-          className="w-full lg:w-1/2"
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <Techandtools />
-        </motion.div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+        {tools.map((tool) => (
+          <div key={tool.name} className="card-spotify album-card flex flex-col items-center gap-2 !p-4">
+            {tool.icon ? (
+              <img src={tool.icon} alt="" className="w-8 h-8 object-contain" aria-hidden="true" />
+            ) : (
+              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-spotify-green/20 text-xs font-bold text-spotify-green">
+                {tool.name.slice(0, 2)}
+              </span>
+            )}
+            <span className="text-sm font-medium text-spotify-text-primary text-center">{tool.name}</span>
+          </div>
+        ))}
+      </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="w-full lg:w-1/2 flex justify-center"
-          initial={{ scale: 0.8, rotate: -5 }}
-          whileInView={{
-            scale: 1,
-            rotate: 0,
-            transition: {
-              type: "spring",
-              stiffness: 100,
-              damping: 10,
-              duration: 0.8
-            }
-          }}
-          viewport={{ once: true, margin: "0px" }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <ProductionStack />
-        </motion.div>
-      </motion.div>
-
-      <motion.div variants={itemVariants} className="mt-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            ["Languages", "Go, Java, Python, SQL, C++"],
-            ["Backend & Frontend", "Spring Boot, Node.js, React, Next.js"],
-            ["Event-Driven & Data", "Kafka, AWS SQS, S3, PostgreSQL, MySQL"],
-            ["Fintech / Banking", "CBS, KYC, RBAC, workflow orchestration"],
-            ["Cloud & DevOps", "AWS ECS, Docker, Kubernetes, CI/CD, Linux"],
-            ["AI-Native Tooling", "Cursor, Claude — daily production use"],
-          ].map(([label, value]) => (
-            <div key={label} className="card-spotify album-card text-left">
-              <p className="text-sm font-bold text-spotify-green mb-2 uppercase tracking-wide">{label}</p>
-              <p className="text-sm text-spotify-text-secondary leading-relaxed">{value}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {categories.map(([label, value]) => (
+          <div key={label} className="rounded-md border border-spotify-border bg-spotify-dark-secondary px-4 py-3">
+            <p className="text-xs font-bold uppercase tracking-wide text-spotify-green mb-1">{label}</p>
+            <p className="text-sm text-spotify-text-secondary">{value}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  </motion.section>
+  </section>
 );
 
 export default Skills;

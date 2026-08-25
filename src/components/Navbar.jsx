@@ -1,44 +1,65 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github, Linkedin } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "../assets/Images/portfolio logo.png";
-import linkedin from "../assets/social media icons/linkedin_2504923.png";
-import github from "../assets/social media icons/github_2504911.png";
-import twitter from "../assets/social media icons/logos_14417709.png";
-import instagram from "../assets/social media icons/social_12234080.png";
 import { trackSocialClick } from "../config/analytics";
+
+const SECTION_IDS = ["home", "about", "skills", "experience", "case-study", "projects", "contact"];
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  useEffect(() => {
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) setActive(visible.target.id);
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0.15, 0.4, 0.7] }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
-    { href: "#case-study", label: "Case Study" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", id: "home", label: "Home" },
+    { href: "#experience", id: "experience", label: "Experience" },
+    { href: "#case-study", id: "case-study", label: "Case Study" },
+    { href: "#projects", id: "projects", label: "Projects" },
+    { href: "#contact", id: "contact", label: "Contact" },
   ];
 
   const socialLinks = [
-    { href: "https://www.linkedin.com/in/aviral-asthana-02b70824b/", img: linkedin, alt: "LinkedIn" },
-    { href: "https://www.github.com/Aviral0702", img: github, alt: "GitHub" },
-    { href: "https://www.instagram.com/i_m_asthana_avi/", img: instagram, alt: "Instagram" },
-    { href: "https://x.com/AviralAsthana10", img: twitter, alt: "Twitter" },
+    {
+      href: "https://www.linkedin.com/in/aviral-asthana-02b70824b/",
+      icon: Linkedin,
+      alt: "LinkedIn",
+    },
+    {
+      href: "https://www.github.com/Aviral0702",
+      icon: Github,
+      alt: "GitHub",
+    },
   ];
 
-  const linkClass =
-    "transition-colors duration-200 font-medium relative group text-spotify-text-secondary hover:text-spotify-text-primary";
+  const linkClass = (id) =>
+    `relative font-medium transition-colors duration-200 ${
+      active === id ? "text-spotify-green" : "text-spotify-text-secondary hover:text-spotify-text-primary"
+    }`;
 
   return (
     <nav
@@ -50,49 +71,47 @@ function Navbar() {
     >
       <div className="flex justify-between items-center py-4 px-6 md:px-8 max-w-7xl mx-auto">
         <a href="#home" className="flex items-center group" aria-label="Homepage">
-          <div className="relative">
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 w-12 h-12 md:w-14 md:h-14 bg-spotify-green/20 rounded-full blur-md group-hover:bg-spotify-green/30 transition-all duration-300" />
-          </div>
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110"
+          />
         </a>
 
         <button
           className="md:hidden p-2 rounded-lg hover:bg-spotify-dark-tertiary transition-colors duration-200 focus-spotify"
-          onClick={toggleMenu}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={24} className="text-spotify-text-primary" /> : <Menu size={24} className="text-spotify-text-primary" />}
         </button>
 
-        <div className="hidden lg:flex lg:items-center lg:space-x-6">
+        <div className="hidden md:flex md:items-center md:space-x-7">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={linkClass}>
+            <a key={link.href} href={link.href} className={linkClass(link.id)}>
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-spotify-green transition-all duration-300 group-hover:w-full" />
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-spotify-green transition-all duration-300 ${
+                  active === link.id ? "w-full" : "w-0"
+                }`}
+              />
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center space-x-4">
-          {socialLinks.map(({ href, img, alt }) => (
+        <div className="hidden md:flex items-center space-x-1">
+          {socialLinks.map(({ href, icon: Icon, alt }) => (
             <a
               key={href}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={alt}
-              className="p-2 rounded-lg hover:bg-spotify-dark-tertiary transition-all duration-200 group"
+              className="p-2 rounded-lg text-spotify-text-secondary hover:text-spotify-green hover:bg-spotify-dark-tertiary transition-colors"
               onClick={() => trackSocialClick(alt.toLowerCase(), href)}
             >
-              <img
-                src={img}
-                alt={alt}
-                className="w-6 h-6 transition-transform duration-200 group-hover:scale-110"
-              />
+              <Icon size={20} />
             </a>
           ))}
         </div>
@@ -112,25 +131,25 @@ function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={linkClass}
+                    className={linkClass(link.id)}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
                   </a>
                 ))}
               </div>
-              <div className="flex justify-center space-x-6 pt-4 border-t border-spotify-border">
-                {socialLinks.map(({ href, img, alt }) => (
+              <div className="flex justify-center space-x-4 pt-4 border-t border-spotify-border">
+                {socialLinks.map(({ href, icon: Icon, alt }) => (
                   <a
                     key={href}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={alt}
-                    className="p-3 rounded-lg hover:bg-spotify-dark-tertiary transition-all duration-200"
+                    className="p-3 rounded-lg text-spotify-text-secondary hover:text-spotify-green hover:bg-spotify-dark-tertiary"
                     onClick={() => trackSocialClick(alt.toLowerCase(), href)}
                   >
-                    <img src={img} alt={alt} className="w-7 h-7" />
+                    <Icon size={22} />
                   </a>
                 ))}
               </div>

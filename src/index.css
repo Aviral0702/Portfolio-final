@@ -300,6 +300,56 @@ html {
   @apply fixed bottom-0 left-0 right-0 h-1 bg-spotify-gradient z-50 pointer-events-none;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--spotify-green);
+  color: #000;
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section-rail {
+  position: relative;
+}
+
+.section-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4rem;
+  bottom: 4rem;
+  width: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #1DB954, transparent);
+  opacity: 0.35;
+}
+
+@media (max-width: 768px) {
+  .section-rail::before {
+    display: none;
+  }
+}
+
 /* Blog markdown content */
 .blog-content {
   @apply text-spotify-text-secondary leading-relaxed space-y-6;

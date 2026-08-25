@@ -19,7 +19,7 @@ const About = () => {
   return (
     <section
       aria-labelledby="about-heading"
-      className="section-padding bg-spotify-dark-secondary"
+      className="section-padding bg-spotify-dark-secondary section-rail"
     >
       <div className="container-max">
         <motion.div
@@ -90,9 +90,6 @@ const About = () => {
                   alt="Aviral Asthana - Backend Software Engineer"
                   className="w-64 h-64 md:w-80 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-spotify-green rounded-full flex items-center justify-center shadow-spotify-green">
-                <span className="text-spotify-dark font-bold text-lg">👨‍💻</span>
               </div>
             </div>
           </motion.div>

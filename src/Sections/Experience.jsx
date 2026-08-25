@@ -32,7 +32,7 @@ const Experience = () => {
   ]
 
   return (
-    <div className="section-padding bg-spotify-dark-secondary">
+    <div className="section-padding bg-spotify-dark-secondary section-rail">
       <div className="container-max">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
