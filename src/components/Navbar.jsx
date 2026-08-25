@@ -27,7 +27,6 @@ function Navbar() {
     { href: "#experience", label: "Experience" },
     { href: "#case-study", label: "Case Study" },
     { href: "#projects", label: "Projects" },
-    { href: "#github", label: "GitHub" },
     { href: "#contact", label: "Contact" },
   ];
 

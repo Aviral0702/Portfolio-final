@@ -10,7 +10,6 @@ const Skills = lazy(() => import("./Sections/Skills"));
 const Experience = lazy(() => import("./Sections/Experience"));
 const CaseStudy = lazy(() => import("./Sections/CaseStudy"));
 const Projects = lazy(() => import("./Sections/Projects"));
-const GitHubActivity = lazy(() => import("./components/GitHubActivity"));
 const Contact = lazy(() => import("./Sections/Contact"));
 
 const sectionVariants = {
@@ -99,16 +98,6 @@ function App() {
               variants={sectionVariants}
             >
               <Projects />
-            </motion.section>
-
-            <motion.section
-              id="github"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={sectionVariants}
-            >
-              <GitHubActivity />
             </motion.section>
 
             <motion.section
